@@ -8,6 +8,7 @@ export default {
 
 <script setup>
 import { Head } from "@inertiajs/vue3";
+import { ref } from "vue";
 
 import HeroSection from "@/Components/HomeComponents/HeroSection.vue";
 import ScrollTools from "@/Components/HomeComponents/ScrollTools.vue";
@@ -15,6 +16,9 @@ import FeaturedProjects from "@/Components/HomeComponents/FeaturedProjects.vue";
 import ScrollStacks from "@/Components/HomeComponents/ScrollStacks.vue";
 import FooterLists from "@/Components/HomeComponents/FooterLists.vue";
 import FootHeader from "@/Components/HomeComponents/FootHeader.vue";
+
+const arrow = ref("/img/arrow.svg");
+
 </script>
 
 <template>
@@ -37,7 +41,7 @@ import FootHeader from "@/Components/HomeComponents/FootHeader.vue";
           <h1 class="text-5xl font-bold">Featured Projects</h1>
 
           <div class="flex items-center gap-2">
-            <img src="@/assets/img/arrow.svg" alt="" class="w-6" />
+            <img :src="arrow" alt="" class="w-6" />
             <p class="text-main text-lg underline">See all projects</p>
           </div>
         </div>

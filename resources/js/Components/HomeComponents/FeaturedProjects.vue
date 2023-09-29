@@ -20,6 +20,7 @@ const props = defineProps({
   },
 });
 const link = ref("/img/link.svg");
+const eye = ref("/img/eye.svg");
 
 </script>
 
@@ -37,7 +38,7 @@ const link = ref("/img/link.svg");
         <!-- change this to routerLink -->
         <a :href="props.detailsLink" target="_blank" class="flex items-center gap-2"> 
           <p>View more details</p>
-          <img src="@/assets/img/eye.svg" alt="" />
+          <img :src="eye" alt="" />
         </a>
       </div>
     </div>
