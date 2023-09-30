@@ -1,13 +1,14 @@
 <script setup>
 import { ref } from "vue";
 import { Link } from '@inertiajs/vue3';
+import "typeface-poppins";
 
 const logo = ref("/img/logo.png");
 const burger = ref("/img/burger.svg");
 </script>
 
 <template>
-    <div class="font-pop bg-portbg text-white w-screen">
+    <div class="!font-pop bg-portbg text-white w-screen overflow-x-hidden">
         <div class="w-[1200px] mx-auto max-xl:w-[800px] max-md:w-screen max-md:px-5">
             <!-- Header -->
             <div
