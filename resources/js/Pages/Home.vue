@@ -31,7 +31,9 @@ const handshake = ref("/img/handshake.svg");
     <HeroSection />
 
     <!-- Frameworks -->
-    <div class="w-full h-20 bg-gray1 absolute left-0 flex items-center opacity-70">
+    <div
+        class="w-full h-20 bg-gray1 absolute left-0 flex items-center opacity-70"
+    >
         <div class="w-full mx-auto flex items-center justify-around">
             <ScrollTools imageSrc="tailwind.png" imageLabel="tailwindcss" />
             <ScrollTools imageSrc="laravel.png" imageLabel="laravel" />
@@ -42,7 +44,9 @@ const handshake = ref("/img/handshake.svg");
     <!-- Featured Projects -->
     <div class="mt-20 mb-40 max-sm:mt-0 max-sm:mb-10">
         <div class="flex items-center justify-between pt-32">
-            <h1 class="text-5xl font-bold max-xl:text-3xl max-md:text-2xl max-sm:text-xl">
+            <h1
+                class="text-5xl font-bold max-xl:text-3xl max-md:text-2xl max-sm:text-xl"
+            >
                 Featured Projects
             </h1>
 
@@ -55,7 +59,9 @@ const handshake = ref("/img/handshake.svg");
                 </p>
             </div>
         </div>
-        <div class="mt-20 max-sm:mt-10 flex flex-wrap justify-between max-md:flex-col">
+        <div
+            class="mt-20 max-sm:mt-10 flex flex-wrap justify-between max-md:flex-col"
+        >
             <FeaturedProjects
                 stack="Laravel"
                 projTitle="Paperless Clearance Management System"
@@ -84,7 +90,9 @@ const handshake = ref("/img/handshake.svg");
     </div>
 
     <!-- scroll stacks -->
-    <div class="w-full h-20 bg-gray1 absolute left-0 flex items-center opacity-70">
+    <div
+        class="w-full h-20 bg-gray1 absolute left-0 flex items-center opacity-70"
+    >
         <div class="w-full mx-auto flex items-center justify-around">
             <ScrollStacks imageSrc="html.png" />
             <ScrollStacks imageSrc="css.png" />
@@ -95,8 +103,14 @@ const handshake = ref("/img/handshake.svg");
 
     <!-- about section -->
     <div class="pt-40 pb-20 max-sm:pt-32 text-center">
-        <h1 class="font-bold text-5xl mb-10 max-md:mb-5 max-md:text-3xl max-sm:text-2xl">About</h1>
-        <div class="mt-20 max-md:mt-10 max-sm:mt-0 flex flex-wrap justify-between max-md:flex-col">
+        <h1
+            class="font-bold text-5xl mb-10 max-md:mb-5 max-md:text-3xl max-sm:text-2xl"
+        >
+            About
+        </h1>
+        <div
+            class="mt-20 max-md:mt-10 max-sm:mt-0 flex flex-wrap justify-between max-md:flex-col"
+        >
             <!-- 1st card -->
             <AboutCard
                 image="bulb"
@@ -144,46 +158,12 @@ const handshake = ref("/img/handshake.svg");
         class="w-full pt-10 bg-gray1 absolute left-0 flex flex-col items-center overflow-hidden"
     >
         <div
-            class="w-[1200px] mx-auto max-xl:w-[800px] max-md:w-screen flex justify-between"
+            class="w-[1200px] mx-auto max-xl:w-[800px] max-md:w-screen flex justify-between flex-wrap max-sm:items-center max-sm:text-center max-sm:gap-5"
         >
             <!-- reusable -->
-            <div class="">
-                <FootHeader> Stacks </FootHeader>
-                <div class="">
-                    <FooterLists listname="HTML" :isLink="false" />
-                    <FooterLists listname="CSS" :isLink="false" />
-                    <FooterLists listname="Javascript" :isLink="false" />
-                    <FooterLists listname="PHP" :isLink="false" />
-                    <FooterLists listname="Mysql" :isLink="false" />
-                </div>
-            </div>
-            <!-- reusable -->
-            <div class="">
-                <FootHeader> Tools/Frameworks </FootHeader>
-                <div class="">
-                    <FooterLists listname="Tailwindcss" :isLink="false" />
-                    <FooterLists listname="Laravel" :isLink="false" />
-                    <FooterLists listname="Vue.js" :isLink="false" />
-                    <FooterLists listname="Figma" :isLink="false" />
-                </div>
-            </div>
-            <!-- reusable -->
-            <div class="">
-                <FootHeader> Capabilities </FootHeader>
-                <div class="">
-                    <FooterLists
-                        listname="Web App Development"
-                        :isLink="false"
-                    />
-                    <FooterLists listname="Web Design" :isLink="false" />
-                    <FooterLists listname="UI/UX" :isLink="false" />
-                    <FooterLists listname="Database Design" :isLink="false" />
-                </div>
-            </div>
-            <!-- reusable -->
-            <div class="">
+            <div class="max-sm:w-full">
                 <FootHeader> Sitemap </FootHeader>
-                <div class="">
+                <div class="flex flex-col items-center justify-center">
                     <!-- make these router links -->
                     <FooterLists listname="Home" :isLink="false" />
                     <FooterLists listname="Projects" :isLink="false" />
@@ -192,9 +172,9 @@ const handshake = ref("/img/handshake.svg");
                 </div>
             </div>
             <!-- reusable -->
-            <div class="">
+            <div class="max-sm:w-full">
                 <FootHeader> Socials </FootHeader>
-                <div class="">
+                <div class="flex flex-col items-center justify-center">
                     <FooterLists
                         listname="LinkedIn"
                         :isLink="true"
@@ -215,6 +195,40 @@ const handshake = ref("/img/handshake.svg");
                         :isLink="true"
                         footLink="https://github.com/bimmbin"
                     />
+                </div>
+            </div>
+            <!-- reusable -->
+            <div class="max-sm:w-full">
+                <FootHeader> Capabilities </FootHeader>
+                <div class="flex flex-col items-center justify-center">
+                    <FooterLists
+                        listname="Web App Development"
+                        :isLink="false"
+                    />
+                    <FooterLists listname="Web Design" :isLink="false" />
+                    <FooterLists listname="UI/UX" :isLink="false" />
+                    <FooterLists listname="Database Design" :isLink="false" />
+                </div>
+            </div>
+            <!-- reusable -->
+            <div class="max-sm:w-full">
+                <FootHeader> Tools/Frameworks </FootHeader>
+                <div class="flex flex-col items-center justify-center">
+                    <FooterLists listname="Tailwindcss" :isLink="false" />
+                    <FooterLists listname="Laravel" :isLink="false" />
+                    <FooterLists listname="Vue.js" :isLink="false" />
+                    <FooterLists listname="Figma" :isLink="false" />
+                </div>
+            </div>
+            <!-- reusable -->
+            <div class="max-sm:w-full">
+                <FootHeader> Stacks </FootHeader>
+                <div class="flex flex-col items-center justify-center">
+                    <FooterLists listname="HTML" :isLink="false" />
+                    <FooterLists listname="CSS" :isLink="false" />
+                    <FooterLists listname="Javascript" :isLink="false" />
+                    <FooterLists listname="PHP" :isLink="false" />
+                    <FooterLists listname="Mysql" :isLink="false" />
                 </div>
             </div>
         </div>
