@@ -40,9 +40,9 @@ const handshake = ref("/img/handshake.svg");
     </div>
 
     <!-- Featured Projects -->
-    <div class="mt-20 mb-40">
+    <div class="mt-20 mb-40 max-sm:mt-0 max-sm:mb-10">
         <div class="flex items-center justify-between pt-32">
-            <h1 class="text-5xl font-bold max-xl:text-3xl max-md:text-2xl">
+            <h1 class="text-5xl font-bold max-xl:text-3xl max-md:text-2xl max-sm:text-xl">
                 Featured Projects
             </h1>
 
@@ -55,7 +55,7 @@ const handshake = ref("/img/handshake.svg");
                 </p>
             </div>
         </div>
-        <div class="mt-20 flex flex-wrap justify-between max-md:flex-col">
+        <div class="mt-20 max-sm:mt-10 flex flex-wrap justify-between max-md:flex-col">
             <FeaturedProjects
                 stack="Laravel"
                 projTitle="Paperless Clearance Management System"
@@ -94,9 +94,9 @@ const handshake = ref("/img/handshake.svg");
     </div>
 
     <!-- about section -->
-    <div class="pt-40 pb-20 text-center">
-        <h1 class="font-bold text-5xl mb-10 max-md:mb-5 max-md:text-3xl">About</h1>
-        <div class="mt-20 max-md:mt-10 flex flex-wrap justify-between max-md:flex-col">
+    <div class="pt-40 pb-20 max-sm:pt-32 text-center">
+        <h1 class="font-bold text-5xl mb-10 max-md:mb-5 max-md:text-3xl max-sm:text-2xl">About</h1>
+        <div class="mt-20 max-md:mt-10 max-sm:mt-0 flex flex-wrap justify-between max-md:flex-col">
             <!-- 1st card -->
             <AboutCard
                 image="bulb"

@@ -21,7 +21,7 @@ const img_path = ref("/img/");
 <template>
     <!-- 4th card -->
     <div
-        class="w-[590px] max-xl:w-[390px] max-md:w-full px-10 py-6 flex flex-col gap-3 max-xl:gap-2 mt-[10px] items-center"
+        class="w-[590px] max-xl:w-[390px] max-md:w-full px-10 max-sm:px-0 py-6 flex flex-col gap-3 max-xl:gap-2 mt-[10px] items-center"
     >
         <img :src="img_path + image + '.svg'" alt="" class="w-16 max-xl:w-12 max-md:w-10" />
 
