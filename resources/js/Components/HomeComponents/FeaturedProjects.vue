@@ -30,7 +30,7 @@ const eye = ref("/img/eye.svg");
     <div class="flex flex-col gap-2">
       <p class="font-bold text-3xl max-xl:text-2xl max-md:text-xl">{{ props.projTitle }}</p>
       <div class="flex items-center gap-10 opacity-50 font-light max-xl:text-sm max-md:text-xs">
-        <a :href="props.liveLink" target="_blank" class="flex items-center gap-2">
+        <a :href="'https://www.' + props.liveLink" target="_blank" class="flex items-center gap-2">
           <p>See live</p>
           <img :src="link" alt="" class="max-xl:h-4 max-md:h-3"/>
         </a>

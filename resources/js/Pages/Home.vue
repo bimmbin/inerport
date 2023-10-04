@@ -65,25 +65,25 @@ const handshake = ref("/img/handshake.svg");
             <FeaturedProjects
                 stack="Laravel"
                 projTitle="Paperless Clearance Management System"
-                liveLink="github.com/bimmbin"
+                liveLink="github.com/bimmbin/clearance"
                 detailsLink="facebook.com"
             />
             <FeaturedProjects
                 stack="Laravel"
                 projTitle="Automated Grading System"
-                liveLink="github.com/bimmbin"
+                liveLink="github.com/bimmbin/grading"
                 detailsLink="facebook.com"
             />
             <FeaturedProjects
-                stack="Vue.js/Laravel"
-                projTitle="Personal Portfolio"
-                liveLink="github.com/bimmbin"
+                stack="Laravel Inertia"
+                projTitle="Fandemonium"
+                liveLink="fandemo.ca"
                 detailsLink="facebook.com"
             />
             <FeaturedProjects
                 stack="PHP"
                 projTitle="Blog Website"
-                liveLink="github.com/bimmbin"
+                liveLink="github.com/bimmbin/blog"
                 detailsLink="facebook.com"
             />
         </div>
