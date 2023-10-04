@@ -22,6 +22,9 @@ export default {
                 gray1: "#1B1B1B",
                 gray2: "#272727",
                 main: "#F15A24",
+                input_bg: "#1B1B1B",
+                main_hover: "#FF9C79",
+
             },
         },
     },

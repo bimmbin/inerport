@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { Link } from '@inertiajs/vue3';
+import { Link } from "@inertiajs/vue3";
 import "typeface-poppins";
 
 const logo = ref("/img/logo.png");
@@ -9,7 +9,9 @@ const burger = ref("/img/burger.svg");
 
 <template>
     <div class="!font-pop bg-portbg text-white w-screen overflow-x-hidden">
-        <div class="w-[1200px] mx-auto max-xl:w-[800px] max-md:w-screen max-md:px-5">
+        <div
+            class="w-[1200px] mx-auto max-xl:w-[800px] max-md:w-screen max-md:px-5"
+        >
             <!-- Header -->
             <div
                 class="flex justify-between items-center bg-portbg h-20 text-white"
@@ -25,12 +27,14 @@ const burger = ref("/img/burger.svg");
                     </ul>
                 </nav>
                 <div class="max-lg:hidden">
-                    <p class="border border-main py-1.5 px-5 rounded-full">
-                        Login
-                    </p>
+                    <Link
+                        :href="route('login')"
+                        class="border border-main py-1.5 px-5 rounded-full"
+                        >Login</Link
+                    >
                 </div>
                 <div class="lg:hidden">
-                  <img :src="burger" alt="" class="h-6 " />
+                    <img :src="burger" alt="" class="h-6" />
                 </div>
             </div>
 
