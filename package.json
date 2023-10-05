@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "lottie-web-vue": "^2.0.7",
-        "typeface-poppins": "^1.1.13"
+        "typeface-poppins": "^1.1.13",
+        "vue-collapsed": "^1.2.8"
     }
 }

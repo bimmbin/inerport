@@ -16,6 +16,7 @@ const props = defineProps({
     },
 });
 const img_path = ref("/img/");
+
 </script>
 
 <template>

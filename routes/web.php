@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DesignController;
 use App\Http\Controllers\Admin\WebDevController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
@@ -32,5 +33,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('web-development', WebDevController::class);
+Route::resource('ui-design', DesignController::class);
 
 require __DIR__.'/auth.php';

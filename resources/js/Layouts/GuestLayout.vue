@@ -20,7 +20,7 @@ const burger = ref("/img/burger.svg");
                 <nav class="max-lg:hidden">
                     <ul class="flex gap-10">
                         <Link :href="route('home')">Home</Link>
-                        <Link :href="route('home')">Projects</Link>
+                        <Link :href="route('web-development.index')">Projects</Link>
 
                         <li>About</li>
                         <li>Contact</li>

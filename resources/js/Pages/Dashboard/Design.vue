@@ -12,6 +12,6 @@ import { ref } from "vue";
 </script>
 
 <template>
-    <Head title="Web Development"/>
-    This is web dev
+    <Head title="UI Designs"/>
+ This is ui designs
 </template>
