@@ -16,7 +16,7 @@ const props = defineProps({
 
 <template>
     <div
-        class="flex items-center gap-2 opacity-50 font-extralight text-lg mt-1"
+        class="flex items-center gap-2 opacity-50 font-extralight text-lg mt-1 max-xl:text-base max-sm:text-sm"
     >
         <p v-if="props.isLink" class="underline">
             <a :href="props.footLink" target="_blank">

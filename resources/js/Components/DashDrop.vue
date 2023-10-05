@@ -42,27 +42,8 @@ const show_details = ref(true);
     <!-- collapse details -->
     <Collapse
         :when="show_details"
-        class="w-full overflow-hidden ml-8 flex flex-col gap-2"
+        class="w-full overflow-hidden ml-8 flex flex-col gap-2 translate-y-[-1rem]"
     >
-        <DashNav
-            image="webdev"
-            nav_name="Web Development"
-            :href="route('web-development.index')"
-            :active="route().current('web-development.index')"
-            class="w-60"
-        />
-        <DashNav
-            image="design-icon"
-            nav_name="Ui Designs"
-            :href="route('ui-design.index')"
-            :active="route().current('ui-design.index')"
-            class="w-60"
-        />
-        <DashNav
-            image="schema"
-            nav_name="Database Schemas"
-            :href="route('home')"
-            class="w-60"
-        />
+        <slot></slot>
     </Collapse>
 </template>

@@ -163,7 +163,7 @@ const handshake = ref("/img/handshake.svg");
             <!-- reusable -->
             <div class="max-sm:w-full">
                 <FootHeader> Sitemap </FootHeader>
-                <div class="flex flex-col items-start max-sm:items-center justify-center">
+                <div class="flex flex-col items-start max-sm:items-center justify-center max-sm:gap-2">
                     <!-- make these router links -->
                     <FooterLists listname="Home" :isLink="false" />
                     <FooterLists listname="Projects" :isLink="false" />
@@ -174,7 +174,7 @@ const handshake = ref("/img/handshake.svg");
             <!-- reusable -->
             <div class="max-sm:w-full">
                 <FootHeader> Socials </FootHeader>
-                <div class="flex flex-col items-start max-sm:items-center justify-center">
+                <div class="flex flex-col items-start max-sm:items-center justify-center max-sm:gap-2">
                     <FooterLists
                         listname="LinkedIn"
                         :isLink="true"
@@ -200,7 +200,7 @@ const handshake = ref("/img/handshake.svg");
             <!-- reusable -->
             <div class="max-sm:w-full">
                 <FootHeader> Capabilities </FootHeader>
-                <div class="flex flex-col items-start max-sm:items-center justify-center">
+                <div class="flex flex-col items-start max-sm:items-center justify-center max-sm:gap-2">
                     <FooterLists
                         listname="Web App Development"
                         :isLink="false"
@@ -213,7 +213,7 @@ const handshake = ref("/img/handshake.svg");
             <!-- reusable -->
             <div class="max-sm:w-full">
                 <FootHeader> Tools/Frameworks </FootHeader>
-                <div class="flex flex-col items-start max-sm:items-center justify-center">
+                <div class="flex flex-col items-start max-sm:items-center justify-center max-sm:gap-2">
                     <FooterLists listname="Tailwindcss" :isLink="false" />
                     <FooterLists listname="Laravel" :isLink="false" />
                     <FooterLists listname="Vue.js" :isLink="false" />
@@ -223,7 +223,7 @@ const handshake = ref("/img/handshake.svg");
             <!-- reusable -->
             <div class="max-sm:w-full">
                 <FootHeader> Stacks </FootHeader>
-                <div class="flex flex-col items-start max-sm:items-center justify-center">
+                <div class="flex flex-col items-start max-sm:items-center justify-center max-sm:gap-2">
                     <FooterLists listname="HTML" :isLink="false" />
                     <FooterLists listname="CSS" :isLink="false" />
                     <FooterLists listname="Javascript" :isLink="false" />
@@ -233,7 +233,7 @@ const handshake = ref("/img/handshake.svg");
             </div>
         </div>
         <div
-            class="border-t-2 border-gray2 w-full flex justify-center items-center py-7 mt-9"
+            class="border-t-2 border-gray2 w-full flex justify-center items-center py-7 mt-9 max-xl:text-sm"
         >
             <p>© 2023 Vinrecs. All rights reserved</p>
         </div>

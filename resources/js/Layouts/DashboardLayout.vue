@@ -4,8 +4,6 @@ import DashNav from "@/Components/DashNav.vue";
 import DashDrop from "@/Components/DashDrop.vue";
 
 import "typeface-poppins";
-
-
 </script>
 
 <template>
@@ -18,14 +16,12 @@ import "typeface-poppins";
                     image="webdev"
                     nav_name="Web Development"
                     :href="route('web-development.index')"
-                    :active="route().current('web-development.index')"
                     class="w-60"
                 />
                 <DashNav
                     image="design-icon"
                     nav_name="Ui Designs"
                     :href="route('ui-design.index')"
-                    :active="route().current('ui-design.index')"
                     class="w-60"
                 />
                 <DashNav
@@ -39,17 +35,15 @@ import "typeface-poppins";
                 image="about"
                 nav_name="About"
                 :href="route('web-development.index')"
-                :active="route().current('web-development.index')"
             />
             <DashNav
                 image="contact"
                 nav_name="Contact"
                 :href="route('ui-design.index')"
-                :active="route().current('ui-design.index')"
             />
         </div>
         <div class="w-full h-screen bg-portbg">
-          <slot></slot>
+            <slot></slot>
         </div>
     </div>
 </template>
