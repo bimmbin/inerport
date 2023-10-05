@@ -7,7 +7,7 @@ import "typeface-poppins";
 </script>
 
 <template>
-    <div class="flex font-pop">
+    <div class="flex font-pop bg-portbg">
         <!-- navigation -->
         <div class="h-screen bg-gray1 px-6 py-20 flex flex-col gap-10">
             <DashNav image="home" nav_name="Home" :href="route('home')" />
@@ -42,7 +42,7 @@ import "typeface-poppins";
                 :href="route('ui-design.index')"
             />
         </div>
-        <div class="w-full h-screen bg-portbg">
+        <div class="w-[1550px] mx-auto py-5 h-full text-white">
             <slot></slot>
         </div>
     </div>
