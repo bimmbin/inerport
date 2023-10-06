@@ -20,7 +20,9 @@ const burger = ref("/img/burger.svg");
                 <nav class="max-lg:hidden">
                     <ul class="flex gap-10">
                         <Link :href="route('home')">Home</Link>
-                        <Link :href="route('web-development.index')">Projects</Link>
+                        <Link :href="route('web-development.index')"
+                            >Projects</Link
+                        >
 
                         <li>About</li>
                         <li>Contact</li>
@@ -37,11 +39,10 @@ const burger = ref("/img/burger.svg");
                     <img :src="burger" alt="" class="h-6" />
                 </div>
             </div>
-
-            <!-- Main content -->
-            <main>
-                <slot></slot>
-            </main>
         </div>
+        <!-- Main content -->
+        <main>
+            <slot></slot>
+        </main>
     </div>
 </template>

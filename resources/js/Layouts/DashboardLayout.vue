@@ -1,15 +1,21 @@
 <script setup>
 import { Link } from "@inertiajs/vue3";
+import { ref } from "vue";
 import DashNav from "@/Components/DashNav.vue";
 import DashDrop from "@/Components/DashDrop.vue";
+import MobileNav from "@/Components/MobileNav.vue";
 
 import "typeface-poppins";
+const logo = ref("/img/logo.png");
+const burger = ref("/img/burger.svg");
 </script>
 
 <template>
     <div class="flex font-pop bg-portbg">
         <!-- navigation -->
-        <div class="h-screen bg-gray1 px-6 py-20 flex flex-col gap-10">
+        <div
+            class="h-screen bg-gray1 px-6 py-20 flex flex-col gap-10 max-md:hidden sticky left-0 top-0"
+        >
             <DashNav image="home" nav_name="Home" :href="route('home')" />
             <DashDrop image="project" nav_name="Projects">
                 <DashNav
@@ -42,7 +48,22 @@ import "typeface-poppins";
                 :href="route('ui-design.index')"
             />
         </div>
-        <div class="w-[1550px] mx-auto py-5 h-full text-white">
+        <div
+            class="w-[1550px] mx-auto max-xl:w-[1000px] max-md:w-screen max-md:px-5 py-5 max-sm:py-0 h-full text-white"
+        >
+            <!-- Header -->
+            <div
+                class="flex justify-between items-center bg-gray1 absolute top-0 left-0 w-screen py-5 px-5 text-white sm:hidden"
+            >
+                <Link :href="route('home')">
+                    <img :src="logo" alt="" class="h-8" />
+                </Link>
+                <div class="lg:hidden">
+                    <img :src="burger" alt="" class="h-6" />
+                </div>
+            </div>
+            <!-- Responsive Nav -->
+            <MobileNav/>
             <slot></slot>
         </div>
     </div>

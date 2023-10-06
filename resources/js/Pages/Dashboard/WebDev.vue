@@ -15,10 +15,16 @@ import CardProj from "@/Components/CardProj.vue";
 
 <template>
     <Head title="Web Development" />
-    <div class="w-full flex flex-wrap gap-2">
+    <div class="w-full flex flex-wrap gap-2 px-5 max-sm:px-0 max-sm:mt-24">
         <CardProj
             stack="Laravel"
             projTitle="Paperless Clearance Management System"
+            liveLink="github.com/bimmbin/grading"
+            detailsLink="facebook.com"
+        />
+        <CardProj
+            stack="Laravel"
+            projTitle="Automated Grading System"
             liveLink="github.com/bimmbin/grading"
             detailsLink="facebook.com"
         />

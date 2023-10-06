@@ -22,8 +22,8 @@ const eye = ref("/img/eye.svg");
 </script>
 
 <template>
-    <div class="w-[770px] h-80 bg-gray2 flex flex-col justify-between">
-      <div class="h-48">
+    <div class="w-[49%] max-xl:w-[495px] max-md:w-screen h-80 max-sm:h-60 bg-gray2 flex flex-col justify-between">
+      <div class="h-48 max-sm:h-32">
         <img :src="proj" alt="" class="object-cover w-full h-full opacity-60">
       </div>
       <div class="flex flex-col gap-2 px-10 py-5">
