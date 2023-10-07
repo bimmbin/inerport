@@ -25,7 +25,7 @@ const logo = ref("/img/logo.png");
 
 <template>
     <div
-        class="w-screen fixed top-0 left-0 h-screen bg-black bg-opacity-95 z-10 flex"
+        class="w-screen fixed top-0 left-0 h-screen bg-black bg-opacity-70 z-10 flex"
     >
         <!-- <div class="bg-fanBg w-full rounded-md px-2 py-3">
             event details
