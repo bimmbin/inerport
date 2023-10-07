@@ -52,11 +52,11 @@ const handshake = ref("/img/handshake.svg");
 
             <div class="flex items-center gap-2">
                 <img :src="arrow" alt="" class="w-6 max-xl:w-5 max-md:w-4" />
-                <p
+                <Link :href="route('web-development.index')"
                     class="text-main text-lg underline max-xl:text-md max-md:text-sm"
                 >
                     See all projects
-                </p>
+                </Link>
             </div>
         </div>
         <div

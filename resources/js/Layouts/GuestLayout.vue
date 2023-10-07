@@ -3,8 +3,14 @@ import { ref } from "vue";
 import { Link } from "@inertiajs/vue3";
 import "typeface-poppins";
 
+import MobileNav from "@/Components/MobileNav.vue";
+
+
 const logo = ref("/img/logo.png");
 const burger = ref("/img/burger.svg");
+
+const show_nav = ref(false);
+
 </script>
 
 <template>
@@ -35,13 +41,18 @@ const burger = ref("/img/burger.svg");
                         >Login</Link
                     >
                 </div>
-                <div class="lg:hidden">
+                <div class="lg:hidden cursor-pointer select-none" @click="show_nav = !show_nav">
                     <img :src="burger" alt="" class="h-6" />
                 </div>
             </div>
         </div>
+        <!-- Responsive Nav -->
+        <div v-if="show_nav">
+                <MobileNav @close_emit="show_nav = !show_nav"/>
+            </div>
+
         <!-- Main content -->
-        <main>
+        <main class="w-[1200px] mx-auto max-xl:w-[800px] max-md:w-screen max-md:px-5">
             <slot></slot>
         </main>
     </div>

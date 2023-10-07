@@ -8,6 +8,9 @@ import MobileNav from "@/Components/MobileNav.vue";
 import "typeface-poppins";
 const logo = ref("/img/logo.png");
 const burger = ref("/img/burger.svg");
+
+const show_nav = ref(false);
+
 </script>
 
 <template>
@@ -53,17 +56,19 @@ const burger = ref("/img/burger.svg");
         >
             <!-- Header -->
             <div
-                class="flex justify-between items-center bg-gray1 absolute top-0 left-0 w-screen py-5 px-5 text-white sm:hidden"
+                class="flex justify-between items-center bg-gray1 absolute top-0 left-0 w-screen py-5 px-5 text-white md:hidden"
             >
                 <Link :href="route('home')">
                     <img :src="logo" alt="" class="h-8" />
                 </Link>
-                <div class="lg:hidden">
+                <div class="lg:hidden cursor-pointer select-none" @click="show_nav = !show_nav">
                     <img :src="burger" alt="" class="h-6" />
                 </div>
             </div>
             <!-- Responsive Nav -->
-            <MobileNav/>
+            <div v-if="show_nav">
+                <MobileNav @close_emit="show_nav = !show_nav"/>
+            </div>
             <slot></slot>
         </div>
     </div>
