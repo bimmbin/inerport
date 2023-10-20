@@ -8,43 +8,75 @@ export default {
 
 <script setup>
 import { Head, Link } from "@inertiajs/vue3";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 import CardProj from "@/Components/CardProj.vue";
+import CreateProj from "@/Components/WebDev/CreateProj.vue";
+
+const show = ref(false);
+
+watch(show, (newValue) => {
+      if (newValue) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "visible";
+      }
+    });
 </script>
 
 <template>
     <Head title="Web Development" />
-    <div class="w-full flex flex-wrap gap-2 px-5 max-sm:px-0 max-md:mt-24">
-        <CardProj
-            stack="Laravel"
-            projTitle="Paperless Clearance Management System"
-            liveLink="github.com/bimmbin/grading"
-            detailsLink="facebook.com"
-        />
-        <CardProj
-            stack="Laravel"
-            projTitle="Automated Grading System"
-            liveLink="github.com/bimmbin/grading"
-            detailsLink="facebook.com"
-        />
-        <CardProj
-            stack="Laravel"
-            projTitle="Automated Grading System"
-            liveLink="github.com/bimmbin/grading"
-            detailsLink="facebook.com"
-        />
-        <CardProj
-            stack="Laravel"
-            projTitle="Automated Grading System"
-            liveLink="github.com/bimmbin/grading"
-            detailsLink="facebook.com"
-        />
-        <CardProj
-            stack="Laravel"
-            projTitle="Automated Grading System"
-            liveLink="github.com/bimmbin/grading"
-            detailsLink="facebook.com"
-        />
+
+    <!-- create proj component -->
+    <div v-if="show">
+        <CreateProj @close_show="show = !show"/>
+    </div>
+
+    <!-- Main content -->
+    <div class="px-5 overflow-auto">
+        <div class="flex justify-between items-center mb-5">
+            <div class="flex gap-8">
+                <h1 class="text-4xl font-semibold">Web Development</h1>
+                <div class="border-r border-gray-500"></div>
+                <div @click="show = !show"
+                    class="bg-main rounded-full px-5 py-2 cursor-pointer select-none"
+                >
+                    Create
+                </div>
+            </div>
+            <span class="mr-[0.5%]">Sort by:</span>
+        </div>
+        <div class="w-full flex flex-wrap gap-2 max-sm:px-0 max-md:mt-24">
+            <CardProj
+                stack="Laravel"
+                projTitle="Paperless Clearance Management System"
+                liveLink="github.com/bimmbin/grading"
+                detailsLink="facebook.com"
+            />
+            <CardProj
+                stack="Laravel"
+                projTitle="Automated Grading System"
+                liveLink="github.com/bimmbin/grading"
+                detailsLink="facebook.com"
+            />
+            <CardProj
+                stack="Laravel"
+                projTitle="Automated Grading System"
+                liveLink="github.com/bimmbin/grading"
+                detailsLink="facebook.com"
+            />
+            <CardProj
+                stack="Laravel"
+                projTitle="Automated Grading System"
+                liveLink="github.com/bimmbin/grading"
+                detailsLink="facebook.com"
+            />
+            <CardProj
+                stack="Laravel"
+                projTitle="Automated Grading System"
+                liveLink="github.com/bimmbin/grading"
+                detailsLink="facebook.com"
+            />
+        </div>
     </div>
 </template>

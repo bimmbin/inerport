@@ -9,37 +9,15 @@ const close_img = ref("/img/close.svg");
 
 const emit = defineEmits(["close_emit"]);
 
-// defineProps({
-//     social_name: {
-//         type: String,
-//         required: true,
-//     },
-//     link: {
-//         type: String,
-//         required: true,
-//     },
-// });
 
 const logo = ref("/img/logo.png");
 </script>
 
 <template>
     <div
-        class="w-screen fixed top-0 left-0 h-screen bg-black bg-opacity-70 z-10 flex"
+        class="w-screen fixed top-0 left-0 h-screen bg-black bg-opacity-80 z-10 flex"
     >
-        <!-- <div class="bg-fanBg w-full rounded-md px-2 py-3">
-            event details
-            <div class="flex justify-between items-center">
-                <h2 class="text-lg font-semibold">Event Details</h2>
-                <div
-                    @click="$emit('close_emit')"
-                    class="cursor-pointer flex items-center justify-center"
-                >
-                    <img :src="close_img" alt="" />
-                </div>
-            </div>
-        </div> -->
-
+       
         <div
             class="flex-1 h-full bg-gray2 px-7 py-5 z-20 flex flex-col gap-20"
         >
