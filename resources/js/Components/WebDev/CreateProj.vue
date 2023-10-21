@@ -8,10 +8,37 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 
 const exit = ref("/img/exit.svg");
+const remove = ref("/img/remove.svg");
+
+const inputTech = ref("");
+const inputFeat = ref("");
+
+const addTech = () => {
+    if (inputTech.value.trim() !== "") {
+        form.tech_used.push(inputTech.value);
+        inputTech.value = ""; // Clear the input after adding
+    }
+};
+const removeTech = (index) => {
+    form.tech_used.splice(index, 1);
+};
+
+const addFeat = () => {
+    if (inputFeat.value.trim() !== "") {
+        form.web_feat.push(inputFeat.value);
+        inputFeat.value = ""; // Clear the input after adding
+    }
+};
+const removeFeat = (index) => {
+    form.web_feat.splice(index, 1);
+};
 
 const form = useForm({
-    email: "",
-    password: "",
+    proj_title: "",
+    proj_description: "",
+    tech_used: [],
+    web_feat: [],
+    proj_description: "",
     remember: false,
 });
 
@@ -37,8 +64,16 @@ const submit = () => {
             >
                 <!-- Header -->
                 <div class="flex justify-between items-center w-full">
-                    <h2 class="text-4xl font-bold max-xl:text-3xl max-md:text-2xl">Create Project</h2>
-                    <img :src="exit" @click="$emit('close_show')" class="h-7 cursor-pointer select-none max-xl:h-6 max-md:h-5" />
+                    <h2
+                        class="text-4xl font-bold max-xl:text-3xl max-md:text-2xl"
+                    >
+                        Create Project
+                    </h2>
+                    <img
+                        :src="exit"
+                        @click="$emit('close_show')"
+                        class="h-7 cursor-pointer select-none max-xl:h-6 max-md:h-5"
+                    />
                 </div>
                 <!-- Input Forms -->
                 <form
@@ -71,14 +106,14 @@ const submit = () => {
 
                     <div class="">
                         <InputLabel
-                            for="proj_title"
-                            value="Project title"
+                            for="proj_description"
+                            value="Description"
                             class="text-white"
                         />
 
                         <textarea
                             v-model="form.proj_description"
-                            id="event_description"
+                            id="proj_description"
                             cols="30"
                             rows="6"
                             class="w-full bg-input_bg dark:text-gray-300 focus:border-main dark:focus:border-main focus:ring-main dark:focus:ring-main rounded-md shadow-sm border-none"
@@ -86,7 +121,7 @@ const submit = () => {
 
                         <InputError
                             class="mt-2"
-                            :message="form.errors.proj_title"
+                            :message="form.errors.proj_description"
                         />
                     </div>
 
@@ -106,56 +141,85 @@ const submit = () => {
 
                     <div class="">
                         <InputLabel
-                            for="proj_title"
+                            for="tech_used"
                             value="Technology Used"
                             class="text-white"
                         />
 
                         <div class="flex items-end gap-1">
                             <TextInput
-                                id="proj_title"
+                                id="tech_used"
                                 type="text"
                                 class="mt-1 block w-full"
-                                v-model="form.proj_title"
+                                v-model="inputTech"
                                 required
                                 autofocus
-                                autocomplete="username"
-                                placeholder="Project Title"
+                                placeholder="Technology Used"
+                                @keydown.enter="addTech"
                             />
-                            <div class=" bg-main rounded-md h-fit px-3 py-2 cursor-pointer select-none">Add</div>
+                            <div
+                                @click="addTech"
+                                class="bg-main rounded-md h-fit px-3 py-2 cursor-pointer select-none"
+                            >
+                                Add
+                            </div>
                         </div>
 
                         <InputError
                             class="mt-2"
-                            :message="form.errors.proj_title"
+                            :message="form.errors.tech_used"
                         />
+
+                        <div class="mt-2 flex flex-wrap gap-2">
+                            <div
+                                v-for="(tech, index) in form.tech_used"
+                                class="relative border-2 border-main w-fit py-1 px-3 rounded-full bg-input_bg"
+                            >
+                                {{ tech }}
+                                <div class="absolute top-0 right-0 z-100"><img @click="removeTech(index)" :src="remove" class="h-5 translate-x-2.5 -translate-y-1.5 cursor-pointer select-none"></div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="">
                         <InputLabel
-                            for="proj_title"
+                            for="web_feat"
                             value="Website Features"
                             class="text-white"
                         />
 
                         <div class="flex items-end gap-1">
                             <TextInput
-                                id="proj_title"
+                                id="web_feat"
                                 type="text"
                                 class="mt-1 block w-full"
-                                v-model="form.proj_title"
+                                v-model="inputFeat"
                                 required
                                 autofocus
-                                autocomplete="username"
-                                placeholder="Project Title"
+                                placeholder="Website Features"
+                                @keydown.enter="addFeat"
                             />
-                            <div class=" bg-main rounded-md h-fit px-3 py-2 cursor-pointer select-none">Add</div>
+                            <div @click="addFeat"
+                                class="bg-main rounded-md h-fit px-3 py-2 cursor-pointer select-none"
+                            >
+                                Add
+                            </div>
                         </div>
 
                         <InputError
                             class="mt-2"
-                            :message="form.errors.proj_title"
+                            :message="form.errors.web_feat"
                         />
+
+                        <div class="mt-2 flex flex-wrap gap-2">
+                            <div
+                                v-for="(feat, index) in form.web_feat"
+                                class="relative border-2 border-main w-fit py-1 px-3 rounded-full bg-input_bg"
+                            >
+                                {{ feat }}
+                                <div class="absolute top-0 right-0 z-100"><img @click="removeFeat(index)" :src="remove" class="h-5 translate-x-2.5 -translate-y-1.5 cursor-pointer select-none"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="flex mt-4 justify-center text-center">
                         <PrimaryButton
