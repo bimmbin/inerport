@@ -33,12 +33,26 @@ const removeFeat = (index) => {
     form.web_feat.splice(index, 1);
 };
 
+// upload picture
+const url = ref([]);
+
+const previewImage = (e) => {
+    const file = e.target.files;
+
+    url.value = []; //remove the recent items
+    for (let i = 0; i < file.length; i++) {
+        url.value.push(URL.createObjectURL(file[i]));
+        // console.log(URL.createObjectURL(file[i]))
+    }
+};
+
 const form = useForm({
     proj_title: "",
     proj_description: "",
     tech_used: [],
     web_feat: [],
     proj_description: "",
+    image: "",
     remember: false,
 });
 
@@ -135,8 +149,26 @@ const submit = () => {
                         <input
                             type="file"
                             id="file"
-                            class="bg-input_bg px-3 py-2 w-full rounded-md"
+                            class="bg-input_bg px-3 py-2 w-full rounded-t-md"
+                            @input="form.image = $event.target.files[0]"
+                            @change="previewImage"
+                            multiple
                         />
+                        <div
+                            class="w-full bg-input_bg h-fit rounded-b-md py-3 px-3 flex flex-wrap gap-5"
+                        >
+                            <!-- <div class="w-36 h-full bg-white"></div> -->
+                            <div v-for="src in url" class=" h-36">
+                            <img
+                                :src="src"
+                                alt=""
+                                class="w-full h-full object-cover"
+                                :class="{ hidden: !url }"
+                            />
+                        </div>
+                        </div>
+
+                        
                     </div>
 
                     <div class="">
@@ -176,7 +208,13 @@ const submit = () => {
                                 class="relative border-2 border-main w-fit py-1 px-3 rounded-full bg-input_bg"
                             >
                                 {{ tech }}
-                                <div class="absolute top-0 right-0 z-100"><img @click="removeTech(index)" :src="remove" class="h-5 translate-x-2.5 -translate-y-1.5 cursor-pointer select-none"></div>
+                                <div class="absolute top-0 right-0 z-100">
+                                    <img
+                                        @click="removeTech(index)"
+                                        :src="remove"
+                                        class="h-5 translate-x-2.5 -translate-y-1.5 cursor-pointer select-none"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -199,7 +237,8 @@ const submit = () => {
                                 placeholder="Website Features"
                                 @keydown.enter="addFeat"
                             />
-                            <div @click="addFeat"
+                            <div
+                                @click="addFeat"
                                 class="bg-main rounded-md h-fit px-3 py-2 cursor-pointer select-none"
                             >
                                 Add
@@ -217,7 +256,13 @@ const submit = () => {
                                 class="relative border-2 border-main w-fit py-1 px-3 rounded-full bg-input_bg"
                             >
                                 {{ feat }}
-                                <div class="absolute top-0 right-0 z-100"><img @click="removeFeat(index)" :src="remove" class="h-5 translate-x-2.5 -translate-y-1.5 cursor-pointer select-none"></div>
+                                <div class="absolute top-0 right-0 z-100">
+                                    <img
+                                        @click="removeFeat(index)"
+                                        :src="remove"
+                                        class="h-5 translate-x-2.5 -translate-y-1.5 cursor-pointer select-none"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
