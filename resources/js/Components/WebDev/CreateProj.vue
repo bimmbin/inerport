@@ -52,6 +52,8 @@ const form = useForm({
     tech_used: [],
     web_feat: [],
     proj_description: "",
+    github_link: "",
+    live_link: "",
     image: "",
     remember: false,
 });
@@ -64,17 +66,17 @@ const submit = () => {
 </script>
 
 <template>
-    <div class="absolute top-0 left-0 w-full h-full z-50 flex flex-col">
+    <div class="absolute top-0 left-0 w-full h-full z-50 flex flex-col overflow-y-auto">
         <div
             @click="$emit('close_show')"
             class="absolute top-0 left-0 bg-black bg-opacity-80 w-full h-28 max-xl:h-20 max-md:h-16 max-sm:h-14 backdrop-blur-lg"
         ></div>
         <div
-            class="relative bg-gray2 w-full h-screen rounded-t-3xl overflow-y-auto mt-20 max-xl:mt-16 max-md:mt-14 max-sm:mt-10"
+            class="relative bg-gray2 w-full flex-1 rounded-t-3xl mt-20 max-xl:mt-16 max-md:mt-14 max-sm:mt-10"
         >
             <!-- Main content -->
             <div
-                class="w-[1200px] mx-auto max-xl:w-[800px] max-md:w-screen max-md:px-5 py-10 max-xl:py-8 max-md:py-5"
+                class="w-[1200px] mx-auto max-xl:w-[800px] max-md:w-full max-md:px-5 py-10 max-xl:py-8 max-md:py-5"
             >
                 <!-- Header -->
                 <div class="flex justify-between items-center w-full">
@@ -94,6 +96,7 @@ const submit = () => {
                     @submit.prevent="submit"
                     class="w-full mt-10 flex flex-col gap-5"
                 >
+                    <!-- Project Title -->
                     <div class="">
                         <InputLabel
                             for="proj_title"
@@ -118,6 +121,7 @@ const submit = () => {
                         />
                     </div>
 
+                    <!-- Project Description -->
                     <div class="">
                         <InputLabel
                             for="proj_description"
@@ -139,6 +143,7 @@ const submit = () => {
                         />
                     </div>
 
+                    <!-- Input file image -->
                     <div class="">
                         <InputLabel
                             for="file"
@@ -158,19 +163,18 @@ const submit = () => {
                             class="w-full bg-input_bg h-fit rounded-b-md py-3 px-3 flex flex-wrap gap-5"
                         >
                             <!-- <div class="w-36 h-full bg-white"></div> -->
-                            <div v-for="src in url" class=" h-36">
-                            <img
-                                :src="src"
-                                alt=""
-                                class="w-full h-full object-cover"
-                                :class="{ hidden: !url }"
-                            />
+                            <div v-for="src in url" class="h-36">
+                                <img
+                                    :src="src"
+                                    alt=""
+                                    class="w-full h-full object-cover"
+                                    :class="{ hidden: !url }"
+                                />
+                            </div>
                         </div>
-                        </div>
-
-                        
                     </div>
 
+                    <!-- Tech Used -->
                     <div class="">
                         <InputLabel
                             for="tech_used"
@@ -219,6 +223,7 @@ const submit = () => {
                         </div>
                     </div>
 
+                    <!-- Web Features -->
                     <div class="">
                         <InputLabel
                             for="web_feat"
@@ -264,6 +269,56 @@ const submit = () => {
                                     />
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2 max-sm:flex-col max-sm:gap-5">
+                        <!-- Github Link -->
+                        <div class="flex-1">
+                            <InputLabel
+                                for="github_link"
+                                value="Github Link"
+                                class="text-white"
+                            />
+
+                            <TextInput
+                                id="github_link"
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="form.github_link"
+                                required
+                                autofocus
+                                placeholder="Github Link"
+                            />
+
+                            <InputError
+                                class="mt-2"
+                                :message="form.errors.github_link"
+                            />
+                        </div>
+
+                        <!-- Live link -->
+                        <div class="flex-1">
+                            <InputLabel
+                                for="live_link"
+                                value="Live Link"
+                                class="text-white"
+                            />
+
+                            <TextInput
+                                id="live_link"
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="form.live_link"
+                                required
+                                autofocus
+                                placeholder="Link"
+                            />
+
+                            <InputError
+                                class="mt-2"
+                                :message="form.errors.live_link"
+                            />
                         </div>
                     </div>
                     <div class="flex mt-4 justify-center text-center">
