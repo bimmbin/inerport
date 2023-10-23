@@ -14,11 +14,9 @@ class admin extends Seeder
      */
     public function run(): void
     {
-      $user = User::create([
-        'email' => 'fandemo@gmail.com',
-        'user_role' => 'admin',
-        'has_profile' => '1',
-        'password' => Hash::make('sayaweh12'),
+      User::create([
+        'username' => 'bimmbin',
+        'password' => Hash::make('admin123'),
       ]);
     }
 }

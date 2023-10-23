@@ -50,6 +50,13 @@ const show_nav = ref(false);
                 nav_name="Contact"
                 :href="route('ui-design.index')"
             />
+            
+            <Link v-if="$page.props.auth.user" :href="route('logout')" method="post" as="button" class="text-white border border-main rounded-md py-3">
+              Logout
+            </Link>
+            <Link v-else :href="route('login')" as="button" class="text-white border border-main rounded-md py-3">
+              Login
+            </Link>
         </div>
         <div
             class="w-[1550px] mx-auto max-xl:w-[1000px] max-md:w-screen max-md:px-5 py-5 max-sm:py-0 min-h-full text-white"

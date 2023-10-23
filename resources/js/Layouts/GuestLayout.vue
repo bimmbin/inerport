@@ -5,12 +5,10 @@ import "typeface-poppins";
 
 import MobileNav from "@/Components/MobileNav.vue";
 
-
 const logo = ref("/img/logo.png");
 const burger = ref("/img/burger.svg");
 
 const show_nav = ref(false);
-
 </script>
 
 <template>
@@ -36,23 +34,36 @@ const show_nav = ref(false);
                 </nav>
                 <div class="max-lg:hidden">
                     <Link
+                        v-if="$page.props.auth.user"
+                        :href="route('logout')"
+                        method="post"
+                        as="button"
+                        class="border border-main py-1.5 px-5 rounded-full"
+                        >Logout</Link
+                    >
+                    <Link v-else
                         :href="route('login')"
                         class="border border-main py-1.5 px-5 rounded-full"
                         >Login</Link
                     >
                 </div>
-                <div class="lg:hidden cursor-pointer select-none" @click="show_nav = !show_nav">
+                <div
+                    class="lg:hidden cursor-pointer select-none"
+                    @click="show_nav = !show_nav"
+                >
                     <img :src="burger" alt="" class="h-6" />
                 </div>
             </div>
         </div>
         <!-- Responsive Nav -->
         <div v-if="show_nav">
-                <MobileNav @close_emit="show_nav = !show_nav"/>
-            </div>
+            <MobileNav @close_emit="show_nav = !show_nav" />
+        </div>
 
         <!-- Main content -->
-        <main class="w-[1200px] mx-auto max-xl:w-[800px] max-md:w-screen max-md:px-5">
+        <main
+            class="w-[1200px] mx-auto max-xl:w-[800px] max-md:w-screen max-md:px-5"
+        >
             <slot></slot>
         </main>
     </div>

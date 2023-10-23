@@ -59,8 +59,8 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post(route("login"), {
-        onFinish: () => form.reset("password"),
+    form.post(route("web-development.store"), {
+        // onFinish: () => form.reset("password"),
     });
 };
 </script>
@@ -155,7 +155,7 @@ const submit = () => {
                             type="file"
                             id="file"
                             class="bg-input_bg px-3 py-2 w-full rounded-t-md"
-                            @input="form.image = $event.target.files[0]"
+                            @input="form.image = $event.target.files"
                             @change="previewImage"
                             multiple
                         />
@@ -188,7 +188,6 @@ const submit = () => {
                                 type="text"
                                 class="mt-1 block w-full"
                                 v-model="inputTech"
-                                required
                                 autofocus
                                 placeholder="Technology Used"
                                 @keydown.enter="addTech"
@@ -237,7 +236,6 @@ const submit = () => {
                                 type="text"
                                 class="mt-1 block w-full"
                                 v-model="inputFeat"
-                                required
                                 autofocus
                                 placeholder="Website Features"
                                 @keydown.enter="addFeat"

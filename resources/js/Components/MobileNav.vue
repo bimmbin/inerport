@@ -9,7 +9,6 @@ const close_img = ref("/img/close.svg");
 
 const emit = defineEmits(["close_emit"]);
 
-
 const logo = ref("/img/logo.png");
 </script>
 
@@ -17,10 +16,7 @@ const logo = ref("/img/logo.png");
     <div
         class="w-screen fixed top-0 left-0 h-screen bg-black bg-opacity-80 z-10 flex"
     >
-       
-        <div
-            class="flex-1 h-full bg-gray2 px-7 py-5 z-20 flex flex-col gap-20"
-        >
+        <div class="flex-1 h-full bg-gray2 px-7 py-5 z-20 flex flex-col gap-20">
             <!-- Logo -->
             <Link :href="route('home')" class="flex items-center gap-2 px-3">
                 <img :src="logo" alt="" class="h-7" />
@@ -29,7 +25,12 @@ const logo = ref("/img/logo.png");
 
             <!-- navigation -->
             <div class="h-full flex flex-col gap-10 sticky left-0 top-0">
-                <DashNav image="home" nav_name="Home" :href="route('home')" @click="$emit('close_emit')"/>
+                <DashNav
+                    image="home"
+                    nav_name="Home"
+                    :href="route('home')"
+                    @click="$emit('close_emit')"
+                />
                 <DashDrop image="project" nav_name="Projects">
                     <DashNav
                         image="webdev"
@@ -65,8 +66,29 @@ const logo = ref("/img/logo.png");
                     :href="route('ui-design.index')"
                     @click="$emit('close_emit')"
                 />
+
+                <Link
+                    v-if="$page.props.auth.user"
+                    :href="route('logout')"
+                    method="post"
+                    as="button"
+                    class="text-white border border-main rounded-md py-3"
+                >
+                    Logout
+                </Link>
+                <Link
+                    v-else
+                    :href="route('login')"
+                    as="button"
+                    class="text-white border border-main rounded-md py-3"
+                >
+                    Login
+                </Link>
             </div>
         </div>
-        <div  class="w-[30%] h-full cursor-pointer " @click="$emit('close_emit')"></div>
+        <div
+            class="w-[30%] h-full cursor-pointer"
+            @click="$emit('close_emit')"
+        ></div>
     </div>
 </template>

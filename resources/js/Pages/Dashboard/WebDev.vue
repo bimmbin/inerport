@@ -37,12 +37,14 @@ watch(show, (newValue) => {
         <div class="flex justify-between items-center mb-5 max-sm:flex-col max-sm:items-start">
             <div class="flex gap-8 max-xl:gap-6 max-md:gap-3">
                 <h1 class="text-4xl font-semibold max-xl:text-3xl max-md:text-2xl">Web Development</h1>
-                <div class="border-r border-gray-500"></div>
-                <div @click="show = !show"
+                <div class="border-r border-gray-500" v-if="$page.props.auth.user"></div>
+                <div v-if="$page.props.auth.user" @click="show = !show" 
                     class="bg-main rounded-full px-5 py-2 cursor-pointer select-none max-sm:px-3"
                 >
                     Create
                 </div>
+
+                
             </div>
             <span class="mr-[0.5%]">Sort by:</span>
         </div>
