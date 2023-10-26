@@ -13,4 +13,10 @@ class TechUsed extends Model
     'web_dev_id',
     'tech_name',
   ];
+
+  public function web_dev()
+  {
+    return $this->belongsTo(WebDev::class);
+  }
+
 }

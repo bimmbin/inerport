@@ -55,6 +55,7 @@ const form = useForm({
     github_link: "",
     live_link: "",
     image: "",
+    img_thumbnail: "0",
     remember: false,
 });
 
@@ -66,7 +67,9 @@ const submit = () => {
 </script>
 
 <template>
-    <div class="absolute top-0 left-0 w-full h-full z-50 flex flex-col overflow-y-auto">
+    <div
+        class="absolute top-0 left-0 w-full h-full z-50 flex flex-col overflow-y-auto"
+    >
         <div
             @click="$emit('close_show')"
             class="absolute top-0 left-0 bg-black bg-opacity-80 w-full h-28 max-xl:h-20 max-md:h-16 max-sm:h-14 backdrop-blur-lg"
@@ -159,17 +162,47 @@ const submit = () => {
                             @change="previewImage"
                             multiple
                         />
+                    </div>
+
+                    <!-- image upload showcase -->
+                    <div class="" v-if="url.length != 0">
+                        <InputLabel
+                            value="Select image thumbnail"
+                            class="text-white"
+                        />
                         <div
-                            class="w-full bg-input_bg h-fit rounded-b-md py-3 px-3 flex flex-wrap gap-5"
+                            class="w-full bg-input_bg h-fit rounded-b-md py-3 px-3 flex flex-wrap gap-5 rounded-md"
                         >
-                            <!-- <div class="w-36 h-full bg-white"></div> -->
-                            <div v-for="src in url" class="h-36">
-                                <img
-                                    :src="src"
-                                    alt=""
-                                    class="w-full h-full object-cover"
-                                    :class="{ hidden: !url }"
+                            <div v-for="(src, index) in url" class="h-36">
+                                <input
+                                    type="radio"
+                                    :id="'image' + index"
+                                    name="imageee"
+                                    v-model="form.img_thumbnail"
+                                    :value="index"
+                                    class="hidden"
+                        
                                 />
+                                <label :for="'image' + index" class="relative cursor-pointer">
+                                    <img
+                                        :src="src"
+                                        alt=""
+                                        class="w-full h-full object-cover rounded-sm"
+                                        :class="{
+                                            hidden: !url,
+                                            'outline outline-offset-2 outline-main ':
+                                                form.img_thumbnail == index,
+                                        }"
+                                    />
+                                    <div
+                                        class="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-main bg-opacity-70 text-xl text-black"
+                                        :class="{
+                                            hidden: form.img_thumbnail != index,
+                                        }"
+                                    >
+                                        Selected
+                                    </div>
+                                </label>
                             </div>
                         </div>
                     </div>

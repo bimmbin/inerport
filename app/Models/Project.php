@@ -7,11 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    protected $fillable = [
-      'proj_name',
-      'proj_description',
-      'img_thumbnail',
+  protected $fillable = [
+    'proj_name',
+    'proj_description',
+    'img_thumbnail',
   ];
+
+  public function web_dev()
+  {
+    return $this->hasOne(WebDev::class);
+  }
+
+  public function image_showcase()
+  {
+    return $this->hasMany(ImageShowcase::class);
+  }
 }

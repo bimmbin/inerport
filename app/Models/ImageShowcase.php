@@ -13,4 +13,9 @@ class ImageShowcase extends Model
       'project_id',
       'img_path',
   ];
+
+  public function project()
+  {
+    return $this->belongsTo(User::class);
+  }
 }
