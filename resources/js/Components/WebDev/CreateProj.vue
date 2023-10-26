@@ -10,6 +10,8 @@ import TextInput from "@/Components/TextInput.vue";
 const exit = ref("/img/exit.svg");
 const remove = ref("/img/remove.svg");
 
+const emit = defineEmits(['close_emit'])
+
 const inputTech = ref("");
 const inputFeat = ref("");
 
@@ -54,16 +56,18 @@ const form = useForm({
     proj_description: "",
     github_link: "",
     live_link: "",
-    image: "",
+    image: [],
     img_thumbnail: "0",
     remember: false,
 });
 
 const submit = () => {
     form.post(route("web-development.store"), {
-        // onFinish: () => form.reset("password"),
+        onFinish: () => emit('close_emit'),
     });
 };
+
+
 </script>
 
 <template>
@@ -161,7 +165,13 @@ const submit = () => {
                             @input="form.image = $event.target.files"
                             @change="previewImage"
                             multiple
+                            accept="image/*"
                         />
+                        <!-- {{ form.errors.image[0] }} -->
+                        <div v-for="(error, index) in form.errors" :key="index">
+              
+                            <InputError class="mt-2" :message="error" />
+                        </div>
                     </div>
 
                     <!-- image upload showcase -->
@@ -181,9 +191,11 @@ const submit = () => {
                                     v-model="form.img_thumbnail"
                                     :value="index"
                                     class="hidden"
-                        
                                 />
-                                <label :for="'image' + index" class="relative cursor-pointer">
+                                <label
+                                    :for="'image' + index"
+                                    class="relative cursor-pointer"
+                                >
                                     <img
                                         :src="src"
                                         alt=""
