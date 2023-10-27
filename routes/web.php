@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\DesignController;
-use App\Http\Controllers\Admin\WebDevController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\DesignController;
+use App\Http\Controllers\WebDev\WebDevController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('web-development', WebDevController::class);
+
 Route::resource('ui-design', DesignController::class);
 
 require __DIR__.'/auth.php';

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\WebDev;
 
 use Inertia\Inertia;
 use App\Models\WebDev;
@@ -10,7 +10,6 @@ use App\Models\TechUsed;
 use Illuminate\Http\Request;
 use App\Models\ImageShowcase;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 
 class WebDevController extends Controller
 {
@@ -21,7 +20,7 @@ class WebDevController extends Controller
   {
     $projects = Project::with('image_showcase', 'web_dev', 'web_dev.tech_used', 'web_dev.web_feat')->latest()->get();
 
-    return Inertia::render('Dashboard/WebDev', [
+    return Inertia::render('Dashboard/WebDev/WebDev', [
       'projects' => $projects
     ]);
   }
@@ -57,7 +56,7 @@ class WebDevController extends Controller
     $project = Project::create([
       'proj_title' => $request->proj_title,
       'proj_description' => $request->proj_description,
-      'img_thumbnail' => '/storage/'.$thumbnail_path,
+      'img_thumbnail' => '/storage/' . $thumbnail_path,
     ]);
 
     //ImageShowcase model creation (loop)
@@ -68,7 +67,7 @@ class WebDevController extends Controller
 
         ImageShowcase::create([
           'project_id' => $project->id,
-          'img_path' => '/storage/'.$image_path,
+          'img_path' => '/storage/' . $image_path,
         ]);
       }
     }
@@ -104,7 +103,12 @@ class WebDevController extends Controller
    */
   public function show(string $id)
   {
-    //
+    // dd($id);
+    $project = Project::findOrFail($id)->with('image_showcase', 'web_dev', 'web_dev.tech_used', 'web_dev.web_feat')->get();
+    dd($project);
+    return Inertia::render('Dashboard/WebDev/WebDev', [
+      'projects' => $project
+    ]);
   }
 
   /**

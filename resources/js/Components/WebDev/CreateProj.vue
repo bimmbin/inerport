@@ -75,7 +75,7 @@ const submit = () => {
         class="absolute top-0 left-0 w-full h-full z-50 flex flex-col overflow-y-auto"
     >
         <div
-            @click="$emit('close_show')"
+            @click="$emit('close_emit')"
             class="absolute top-0 left-0 bg-black bg-opacity-80 w-full h-28 max-xl:h-20 max-md:h-16 max-sm:h-14 backdrop-blur-lg"
         ></div>
         <div
@@ -94,7 +94,7 @@ const submit = () => {
                     </h2>
                     <img
                         :src="exit"
-                        @click="$emit('close_show')"
+                        @click="$emit('close_emit')"
                         class="h-7 cursor-pointer select-none max-xl:h-6 max-md:h-5"
                     />
                 </div>
