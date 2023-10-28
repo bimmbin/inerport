@@ -1,5 +1,5 @@
 <script setup>
-import { Head, Link } from "@inertiajs/vue3";
+import { Link } from "@inertiajs/vue3";
 import { ref } from "vue";
 
 defineProps({
@@ -27,10 +27,10 @@ const eye = ref("/img/eye.svg");
             </a>
 
             <!-- change this to routerLink -->
-            <a href="" target="_blank" class="flex items-center gap-2">
+            <Link :href="route('web-development.show', project.id)" class="flex items-center gap-2">
               <p>View more details</p>
               <img :src="eye" alt="" class="max-xl:h-4 max-md:h-3"/>
-            </a>
+            </Link>
           </div>
         </div>
     </div>

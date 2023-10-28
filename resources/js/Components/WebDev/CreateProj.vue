@@ -58,6 +58,7 @@ const form = useForm({
     live_link: "",
     image: [],
     img_thumbnail: "0",
+    category: "web_dev",
     remember: false,
 });
 

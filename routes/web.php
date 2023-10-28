@@ -36,4 +36,5 @@ Route::resource('web-development', WebDevController::class);
 
 Route::resource('ui-design', DesignController::class);
 
+
 require __DIR__.'/auth.php';

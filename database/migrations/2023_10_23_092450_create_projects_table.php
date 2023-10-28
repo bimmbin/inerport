@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('proj_title');
             $table->text('proj_description');
             $table->string('img_thumbnail');
+            $table->string('category');
             $table->timestamps();
         });
     }

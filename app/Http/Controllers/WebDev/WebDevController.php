@@ -57,6 +57,7 @@ class WebDevController extends Controller
       'proj_title' => $request->proj_title,
       'proj_description' => $request->proj_description,
       'img_thumbnail' => '/storage/' . $thumbnail_path,
+      'category' => $request->category,
     ]);
 
     //ImageShowcase model creation (loop)
@@ -103,11 +104,10 @@ class WebDevController extends Controller
    */
   public function show(string $id)
   {
-    // dd($id);
-    $project = Project::findOrFail($id)->with('image_showcase', 'web_dev', 'web_dev.tech_used', 'web_dev.web_feat')->get();
-    dd($project);
-    return Inertia::render('Dashboard/WebDev/WebDev', [
-      'projects' => $project
+    $project = Project::with('image_showcase', 'web_dev', 'web_dev.tech_used', 'web_dev.web_feat')->findOrFail($id);
+
+    return Inertia::render('Dashboard/WebDev/DevProject', [
+      'project' => $project
     ]);
   }
 

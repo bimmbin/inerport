@@ -13,6 +13,7 @@ class Project extends Model
     'proj_title',
     'proj_description',
     'img_thumbnail',
+    'category',
   ];
 
   public function web_dev()
