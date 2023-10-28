@@ -272,7 +272,7 @@ const submit = () => {
                     <div class="">
                         <InputLabel
                             for="web_feat"
-                            value="Website Features"
+                            value="Features"
                             class="text-white"
                         />
 
@@ -283,7 +283,7 @@ const submit = () => {
                                 class="mt-1 block w-full"
                                 v-model="inputFeat"
                                 autofocus
-                                placeholder="Website Features"
+                                placeholder="Features"
                                 @keydown.enter="addFeat"
                             />
                             <div
