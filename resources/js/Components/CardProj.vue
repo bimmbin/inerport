@@ -21,7 +21,7 @@ const eye = ref("/img/eye.svg");
       <div class="flex flex-col gap-2 px-10 py-5">
           <p class="font-bold text-3xl max-xl:text-2xl max-md:text-xl">{{ project.proj_title }}</p>
           <div class="flex items-center gap-10 opacity-50 font-light max-xl:text-sm max-md:text-xs">
-            <a :href="project.web_dev.live_link" target="_blank" class="flex items-center gap-2">
+            <a :href="'https://www.' + project.web_dev.live_link" target="_blank" class="flex items-center gap-2">
               <p>See live</p>
               <img :src="link" alt="" class="max-xl:h-4 max-md:h-3"/>
             </a>

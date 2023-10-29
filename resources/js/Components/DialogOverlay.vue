@@ -21,7 +21,7 @@ defineProps({
         >
             <!-- Main content -->
             <div
-                class="w-[1200px] mx-auto max-xl:w-[800px] max-md:w-full max-md:px-5 py-10 max-xl:py-8 max-md:py-5"
+                class="w-[1200px] mx-auto max-xl:w-[800px] max-lg:w-full max-lg:px-10 max-md:px-5 py-10 max-xl:py-8 max-md:py-5"
             >
                 <slot></slot>
             </div>

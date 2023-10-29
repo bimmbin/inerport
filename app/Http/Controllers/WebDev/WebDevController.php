@@ -105,9 +105,14 @@ class WebDevController extends Controller
   public function show(string $id)
   {
     $project = Project::with('image_showcase', 'web_dev', 'web_dev.tech_used', 'web_dev.web_feat')->findOrFail($id);
+    $recommend_projects = Project::whereNot(function ($query) use ($project) {
+      $query->where('id', $project->id);
+    })
+      ->get();
 
     return Inertia::render('Dashboard/WebDev/DevProject', [
-      'project' => $project
+      'project' => $project,
+      'recommend_projects' => $recommend_projects,
     ]);
   }
 
