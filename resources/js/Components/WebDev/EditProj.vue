@@ -7,6 +7,13 @@ import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 
+const props = defineProps({
+    project: {
+        type: Object,
+        required: true,
+    },
+});
+
 const exit = ref("/img/exit.svg");
 const remove = ref("/img/remove.svg");
 
@@ -48,21 +55,31 @@ const previewImage = (e) => {
     }
 };
 
+const tech_names = props.project.web_dev.tech_used.map(
+    (obj) => obj.tech_name
+);
+const feat_names = props.project.web_dev.web_feat.map(
+    (obj) => obj.feat_name
+);
+const img_paths = props.project.image_showcase.map(
+    (obj) => obj.img_path
+);
+
 const form = useForm({
-    proj_title: "",
-    tech_used: [],
-    web_feat: [],
-    proj_description: "",
-    github_link: "",
-    live_link: "",
+    proj_title: props.project.proj_title,
+    proj_description: props.project.proj_description,
+    tech_used: tech_names,
+    web_feat: feat_names,
+    github_link: props.project.web_dev.github_link,
+    live_link: props.project.web_dev.live_link,
     image: [],
-    img_thumbnail: "0",
+    img_thumbnail: props.project.img_thumbnail,
     category: "web_dev",
     remember: false,
 });
 
 const submit = () => {
-    form.post(route("web-development.store"), {
+    form.put(route("web-development.update", props.project.id), {
         onSuccess: () => emit("close_emit"),
     });
 };
@@ -88,7 +105,7 @@ const submit = () => {
                     <h2
                         class="text-4xl font-bold max-xl:text-3xl max-md:text-2xl"
                     >
-                        Create Project
+                        Edit Project 
                     </h2>
                     <img
                         :src="exit"
@@ -172,7 +189,7 @@ const submit = () => {
                     </div>
 
                     <!-- image upload showcase -->
-                    <div class="" v-if="url.length != 0">
+                    <div class="" v-if="img_paths.length != 0">
                         <InputLabel
                             value="Select image thumbnail"
                             class="text-white"
@@ -180,7 +197,7 @@ const submit = () => {
                         <div
                             class="w-full bg-input_bg h-fit rounded-b-md py-3 px-3 flex flex-wrap gap-5 rounded-md"
                         >
-                            <div v-for="(src, index) in url" class="h-36">
+                            <div v-for="(src, index) in img_paths" class="h-36">
                                 <input
                                     type="radio"
                                     :id="'image' + index"
@@ -367,7 +384,7 @@ const submit = () => {
                             :class="{ 'opacity-25': form.processing }"
                             :disabled="form.processing"
                         >
-                            Submit
+                           Update
                         </PrimaryButton>
                     </div>
                 </form>

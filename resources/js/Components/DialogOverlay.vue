@@ -11,7 +11,7 @@ defineProps({
 <template>
     <!-- Dialog overlay -->
     <div
-        class="absolute top-0 left-0 w-full h-full z-50 flex flex-col overflow-y-auto"
+        class="absolute top-0 left-0 w-full h-full z-10 flex flex-col overflow-y-auto"
     >
         <Link :href="route(route_back)"
             class="absolute top-0 left-0 bg-black bg-opacity-50 w-full h-28 max-xl:h-20 max-md:h-16 max-sm:h-14 backdrop-blur-md"

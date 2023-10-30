@@ -51,15 +51,15 @@ class WebDevController extends Controller
     ]);
 
     //thumbnail upload
-    if ($request->hasFile('image')) {
-      $thumbnail_path = $request->file('image')[$request->img_thumbnail]->store('image', 'public');
-    }
+    // if ($request->hasFile('image')) {
+    //   $thumbnail_path = $request->file('image')[$request->img_thumbnail]->store('image', 'public');
+    // }
 
     //Project model creation
     $project = Project::create([
       'proj_title' => $request->proj_title,
       'proj_description' => $request->proj_description,
-      'img_thumbnail' => '/storage/' . $thumbnail_path,
+      'img_thumbnail' => $request->img_thumbnail,
       'category' => $request->category,
     ]);
 
@@ -132,7 +132,28 @@ class WebDevController extends Controller
    */
   public function update(Request $request, string $id)
   {
-    //
+    $request->validate([
+      'proj_title' => 'required|string|max:255',
+      'proj_description' => 'required|string',
+      'github_link.*' => 'required|string',
+      'live_link.*' => 'required|string',
+      'tech_used' => 'required|array',
+      'web_feat' => 'required|array',
+    ]);
+
+     //ImageShowcase model creation (loop)
+     if ($request->hasFile('image')) {
+      dd('it has file');
+      // foreach ($request->image as $image) {
+
+      //   $image_path = $image->store('image', 'public');
+
+      //   ImageShowcase::create([
+      //     'project_id' => $project->id,
+      //     'img_path' => '/storage/' . $image_path,
+      //   ]);
+      // }
+    }
   }
 
   /**

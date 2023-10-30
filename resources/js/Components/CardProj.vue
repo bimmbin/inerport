@@ -16,7 +16,7 @@ const eye = ref("/img/eye.svg");
 <template>
     <div class="w-[550px] max-2xl:w-[450px] max-xl:w-full h-80 max-sm:h-60 bg-gray2 flex flex-col justify-between">
       <div class="h-48 max-sm:h-32">
-        <img :src="project.img_thumbnail" alt="" class="object-cover w-full h-full opacity-60">
+        <img :src="project.image_showcase[project.img_thumbnail].img_path" alt="" class="object-cover w-full h-full opacity-60">
       </div>
       <div class="flex flex-col gap-2 px-10 py-5">
           <p class="font-bold text-3xl max-xl:text-2xl max-md:text-xl">{{ project.proj_title }}</p>

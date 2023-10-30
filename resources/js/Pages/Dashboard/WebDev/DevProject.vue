@@ -13,10 +13,12 @@ import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 
 import DialogOverlay from "@/Components/DialogOverlay.vue";
+import EditProj from "@/Components/WebDev/EditProj.vue";
 
 const exit = ref("/img/exit.svg");
 const live = ref("/img/live.svg");
 const github = ref("/img/github.svg");
+const edit = ref("/img/edit.svg");
 
 const { project, recommend_projects } = defineProps({
     project: Object,
@@ -52,9 +54,14 @@ function handleResize() {
 }
 
 window.addEventListener("resize", handleResize);
+
+const show_edit = ref(false);
 </script>
 
 <template>
+    <div v-if="show_edit">
+        <EditProj @close_emit="show_edit = !show_edit" :project="project"></EditProj>
+    </div>
     <DialogOverlay route_back="web-development.index">
         <div class="flex justify-between items-start w-full mb-5 max-sm:mb-2">
             <div class="flex flex-col gap-3">
@@ -65,45 +72,54 @@ window.addEventListener("resize", handleResize);
                     <a
                         :href="'https://www.' + project.web_dev.live_link"
                         target="_blank"
-                        class="flex items-center gap-2"
+                        class="bg-red-500"
                     >
                         <img
                             :src="live"
-                            class="h-9 cursor-pointer select-none max-xl:h-7 max-md:h-6"
+                            class="h-20 cursor-pointer select-none max-xl:h-7 max-md:h-6"
                         />
                     </a>
                     <a
                         :href="'https://www.' + project.web_dev.github_link"
                         target="_blank"
-                        class="flex items-center gap-2"
+                        class="bg-red-500"
                     >
                         <img
                             :src="github"
-                            class="h-9 cursor-pointer select-none max-xl:h-7 max-md:h-6"
+                            class="h-20 select-none max-xl:h-7 max-md:h-6"
                         />
                     </a>
                 </div>
             </div>
             <div class="flex items-center gap-5">
                 <div class="mr-10 flex gap-5 max-sm:hidden">
+                    <div
+                        @click="show_edit = !show_edit"
+                        class="cursor-pointer border-[2px] border-gray-600 active:bg-main rounded-full p-2 hover:bg-gray-600"
+                    >
+                        <img
+                            :src="edit"
+                            class="h-6 select-none max-xl:h-6 max-md:h-5"
+                        />
+                    </div>
                     <a
                         :href="'https://www.' + project.web_dev.live_link"
                         target="_blank"
-                        class="flex items-center gap-2"
+                        class="cursor-pointer border-[2px] active:bg-main border-gray-600 rounded-full p-2 hover:bg-gray-600"
                     >
                         <img
                             :src="live"
-                            class="h-9 cursor-pointer select-none max-xl:h-6 max-md:h-5"
+                            class="h-6 select-none max-xl:h-6 max-md:h-5"
                         />
                     </a>
                     <a
                         :href="'https://www.' + project.web_dev.github_link"
                         target="_blank"
-                        class="flex items-center gap-2"
+                        class="cursor-pointer border-[2px] active:bg-main border-gray-600 rounded-full p-2 hover:bg-gray-600"
                     >
                         <img
                             :src="github"
-                            class="h-9 cursor-pointer select-none max-xl:h-6 max-md:h-5"
+                            class="h-6 cursor-pointer select-none max-xl:h-6 max-md:h-5"
                         />
                     </a>
                 </div>
@@ -190,7 +206,6 @@ window.addEventListener("resize", handleResize);
                         </div>
                     </div>
                 </Slide>
-
             </Carousel>
         </div>
     </DialogOverlay>

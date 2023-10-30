@@ -38,7 +38,7 @@ watch(show, (newValue) => {
 
     <!-- Main content -->
     <div
-        class="px-5 max-sm:px-0 overflow-auto max-md:mt-24 max-md:overflow-y-hidden"
+        class="h-full px-5 max-sm:px-0 overflow-auto max-md:mt-24 max-md:overflow-y-hidden"
     >
         <div
             class="flex justify-between items-center mb-5 max-sm:flex-col max-sm:items-start"

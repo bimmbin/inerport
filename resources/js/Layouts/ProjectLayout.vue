@@ -22,7 +22,7 @@ const show_nav = ref(false);
             class="w-[1180px] min-h-screen mx-auto max-2xl:w-[1000px] max-xl:w-[1000px] max-md:w-screen max-md:px-5 py-5 max-sm:py-0 text-white"
         >
             <div
-                class="px-5 max-sm:px-0 overflow-auto max-md:mt-24 max-md:overflow-y-hidden"
+                class="h-full px-5 max-sm:px-0 overflow-auto max-md:mt-24 max-md:overflow-y-hidden"
             >
                 <div
                     class="flex justify-between items-center mb-5 max-sm:flex-col max-sm:items-start"
