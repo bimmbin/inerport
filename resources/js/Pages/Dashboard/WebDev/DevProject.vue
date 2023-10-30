@@ -23,7 +23,35 @@ const { project, recommend_projects } = defineProps({
     recommend_projects: Object,
 });
 
-const items = ["Item 1", "Item 2", "Item 3", "Item 4"];
+let item_count = ref();
+
+//current state
+if (window.innerWidth <= 400) {
+    item_count.value = 1;
+} else if (window.innerWidth <= 700) {
+    item_count.value = 2;
+} else if (window.innerWidth <= 1280) {
+    item_count.value = 3;
+} else {
+    item_count.value = 5;
+}
+
+//responsive state
+function handleResize() {
+    const innerWidth = window.innerWidth;
+    console.log(`Window innerWidth: ${innerWidth}px`);
+    if (innerWidth <= 400) {
+        item_count.value = 1;
+    } else if (innerWidth <= 700) {
+        item_count.value = 2;
+    } else if (innerWidth <= 1280) {
+        item_count.value = 3;
+    } else {
+        item_count.value = 5;
+    }
+}
+
+window.addEventListener("resize", handleResize);
 </script>
 
 <template>
@@ -33,7 +61,7 @@ const items = ["Item 1", "Item 2", "Item 3", "Item 4"];
                 <h2 class="text-4xl font-bold max-xl:text-3xl max-md:text-2xl">
                     {{ project.proj_title }}
                 </h2>
-                <div class="mr-10 flex gap-5  max-sm:gap-2 sm:hidden">
+                <div class="mr-10 flex gap-5 max-sm:gap-2 sm:hidden">
                     <a
                         :href="'https://www.' + project.web_dev.live_link"
                         target="_blank"
@@ -82,7 +110,7 @@ const items = ["Item 1", "Item 2", "Item 3", "Item 4"];
                 <Link :href="route('web-development.index')">
                     <img
                         :src="exit"
-                        class="h-7 cursor-pointer select-none max-xl:h-6 max-md:h-5  max-sm:mt-2"
+                        class="h-7 cursor-pointer select-none max-xl:h-6 max-md:h-5 max-sm:mt-2"
                     />
                 </Link>
             </div>
@@ -133,21 +161,25 @@ const items = ["Item 1", "Item 2", "Item 3", "Item 4"];
         </div>
 
         <div class="mt-5">
-            <span class="text font-semibold">More projects:</span>
+            <span class="text font-semibold">Other projects</span>
 
-            <Carousel :items-to-show="5" :autoplay="7000" :wrap-around="true">
+            <Carousel
+                :items-to-show="item_count"
+                :autoplay="5000"
+                :wrap-around="true"
+            >
                 <Slide
                     v-for="rec_proj in recommend_projects"
                     :key="rec_proj.id"
                     class="pr-2"
                 >
-                    <div class="relative w-80 h-40 box-border">
+                    <div class="relative w-80 min-h-40 box-border">
                         <img
                             :src="rec_proj.img_thumbnail"
-                            class="object-cover w-full h-full"
+                            class="object-cover w-full h-40"
                         />
                         <div
-                            class="absolute bottom-0 left-0 z-10 w-full h-20 bg-black bg-opacity-80 py-3 px-4"
+                            class="absolute bottom-0 left-0 z-10 w-full h-fit bg-black bg-opacity-80 py-3 px-4"
                         >
                             <h2 class="text-lg font-semibold">
                                 {{ rec_proj.proj_title }}
@@ -159,9 +191,6 @@ const items = ["Item 1", "Item 2", "Item 3", "Item 4"];
                     </div>
                 </Slide>
 
-                <template #addons>
-                    <Pagination />
-                </template>
             </Carousel>
         </div>
     </DialogOverlay>
@@ -188,5 +217,9 @@ const items = ["Item 1", "Item 2", "Item 3", "Item 4"];
 }
 .carousel__next:hover {
     color: gray;
+}
+
+.carousel {
+    text-align: start;
 }
 </style>

@@ -44,6 +44,9 @@ class WebDevController extends Controller
       'proj_description' => 'required|string',
       'github_link.*' => 'required|string',
       'live_link.*' => 'required|string',
+      'image' => 'required|array',
+      'tech_used' => 'required|array',
+      'web_feat' => 'required|array',
       'image.*' => 'required|image|mimes:jpeg,jpg,png,gif,svg|max:40000',
     ]);
 

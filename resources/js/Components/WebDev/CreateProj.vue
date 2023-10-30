@@ -10,7 +10,7 @@ import TextInput from "@/Components/TextInput.vue";
 const exit = ref("/img/exit.svg");
 const remove = ref("/img/remove.svg");
 
-const emit = defineEmits(['close_emit'])
+const emit = defineEmits(["close_emit"]);
 
 const inputTech = ref("");
 const inputFeat = ref("");
@@ -64,11 +64,9 @@ const form = useForm({
 
 const submit = () => {
     form.post(route("web-development.store"), {
-        onFinish: () => emit('close_emit'),
+        onSuccess: () => emit("close_emit"),
     });
 };
-
-
 </script>
 
 <template>
@@ -170,7 +168,6 @@ const submit = () => {
                         />
                         <!-- {{ form.errors.image[0] }} -->
                         <div v-for="(error, index) in form.errors" :key="index">
-              
                             <InputError class="mt-2" :message="error" />
                         </div>
                     </div>
