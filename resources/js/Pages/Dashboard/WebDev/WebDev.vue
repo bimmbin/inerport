@@ -7,11 +7,12 @@ export default {
 </script>
 
 <script setup>
-import { Head, Link } from "@inertiajs/vue3";
+import { Head } from "@inertiajs/vue3";
 import { ref, watch } from "vue";
 
 import CardProj from "@/Components/CardProj.vue";
 import CreateProj from "@/Components/WebDev/CreateProj.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
 
 const { projects } = defineProps({
     projects: Object,
@@ -26,6 +27,7 @@ watch(show, (newValue) => {
         document.body.style.overflow = "visible";
     }
 });
+
 </script>
 
 <template>
@@ -40,6 +42,7 @@ watch(show, (newValue) => {
     <div
         class="h-full px-5 max-sm:px-0 overflow-auto max-md:mt-24 max-md:overflow-y-hidden"
     >
+        
         <div
             class="flex justify-between items-center mb-5 max-sm:flex-col max-sm:items-start"
         >
@@ -63,12 +66,12 @@ watch(show, (newValue) => {
             </div>
             <span class="mr-[0.5%]">Sort by:</span>
         </div>
-        <div class="w-full flex flex-wrap gap-3 max-xl:flex-nowrap max-xl:flex-col max-sm:px-0 justify-stretch">
+        <div
+            class="w-full flex flex-wrap gap-3 max-xl:flex-nowrap max-xl:flex-col max-sm:px-0 justify-stretch"
+        >
             <div v-for="project in projects">
-              <!-- {{ project }} -->
-                <CardProj
-                    :project="project"
-                />
+                <!-- {{ project }} -->
+                <CardProj :project="project" />
             </div>
         </div>
     </div>

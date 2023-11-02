@@ -10,6 +10,7 @@ use App\Models\TechUsed;
 use Illuminate\Http\Request;
 use App\Models\ImageShowcase;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class WebDevController extends Controller
 {
@@ -38,15 +39,14 @@ class WebDevController extends Controller
    */
   public function store(Request $request)
   {
-
     $request->validate([
       'proj_title' => 'required|string|max:255',
       'proj_description' => 'required|string',
       'github_link.*' => 'required|string',
       'live_link.*' => 'required|string',
-      'image' => 'required|array',
       'tech_used' => 'required|array',
       'web_feat' => 'required|array',
+      'image' => 'required|array',
       'image.*' => 'required|image|mimes:jpeg,jpg,png,gif,svg|max:40000',
     ]);
 
@@ -108,7 +108,7 @@ class WebDevController extends Controller
   public function show(string $id)
   {
     $project = Project::with('image_showcase', 'web_dev', 'web_dev.tech_used', 'web_dev.web_feat')->findOrFail($id);
-    $recommend_projects = Project::whereNot(function ($query) use ($project) {
+    $recommend_projects = Project::with('image_showcase')->whereNot(function ($query) use ($project) {
       $query->where('id', $project->id);
     })
       ->get();
@@ -135,25 +135,72 @@ class WebDevController extends Controller
     $request->validate([
       'proj_title' => 'required|string|max:255',
       'proj_description' => 'required|string',
-      'github_link.*' => 'required|string',
-      'live_link.*' => 'required|string',
+      'github_link' => 'required|string',
+      'live_link' => 'required|string',
       'tech_used' => 'required|array',
       'web_feat' => 'required|array',
+      'image' => 'array',
+      'image.*' => 'image|mimes:jpeg,jpg,png,gif,svg|max:40000',
     ]);
 
-     //ImageShowcase model creation (loop)
-     if ($request->hasFile('image')) {
-      dd('it has file');
-      // foreach ($request->image as $image) {
+    $project = Project::with('image_showcase', 'web_dev', 'web_dev.tech_used', 'web_dev.web_feat')->findOrFail($id);
 
-      //   $image_path = $image->store('image', 'public');
+    //Project update
+    $project->proj_title = $request->proj_title;
+    $project->proj_description = $request->proj_description;
+    $project->img_thumbnail = $request->img_thumbnail;
+    $project->proj_title = $request->proj_title;
+    $project->save();
 
-      //   ImageShowcase::create([
-      //     'project_id' => $project->id,
-      //     'img_path' => '/storage/' . $image_path,
-      //   ]);
-      // }
+    //ImageShowcase update (loop)
+    if ($request->hasFile('image')) {
+      //remove old images
+      foreach ($project->image_showcase as $image) {
+        $proper_img_path = ltrim($image->img_path, '/storage');
+        Storage::disk('public')->delete($proper_img_path);
+      }
+      $project->image_showcase()->delete();
+
+      //insert new images
+      foreach ($request->image as $image) {
+
+        $image_path = $image->store('image', 'public');
+
+        ImageShowcase::create([
+          'project_id' => $project->id,
+          'img_path' => '/storage/' . $image_path,
+        ]);
+      }
     }
+
+    //webdev update
+    $project->web_dev->github_link = $request->github_link;
+    $project->web_dev->live_link = $request->live_link;
+    $project->web_dev->save();
+    
+    //TechUsed model creation
+    foreach ($request->tech_used as $tech) {
+      $tech_row = TechUsed::firstOrNew(['tech_name' => $tech], [
+        'web_dev_id' => $project->web_dev->id
+      ]);
+
+      if (!$tech_row->exists) {
+        $tech_row->save();
+      }
+    }
+
+    //WebFeat model creation
+    foreach ($request->web_feat as $feat) {
+      $feat_row = WebFeat::firstOrNew(['feat_name' => $feat], [
+        'web_dev_id' => $project->web_dev->id
+      ]);
+
+      if (!$feat_row->exists) {
+        $feat_row->save();
+      }
+    }
+
+    return redirect()->route('web-development.show', $id);
   }
 
   /**

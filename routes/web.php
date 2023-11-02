@@ -32,7 +32,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('web-development', WebDevController::class);
+Route::resource('web-development', WebDevController::class)->except([
+  'update',
+]);;
+
+Route::post('/web-development/{id}', [WebDevController::class, 'update'])->name('web-development.update');
+
 
 Route::resource('ui-design', DesignController::class);
 

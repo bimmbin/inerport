@@ -42,8 +42,10 @@ const removeFeat = (index) => {
     form.web_feat.splice(index, 1);
 };
 
+const img_paths = props.project.image_showcase.map((obj) => obj.img_path);
+
 // upload picture
-const url = ref([]);
+const url = ref(img_paths);
 
 const previewImage = (e) => {
     const file = e.target.files;
@@ -55,15 +57,8 @@ const previewImage = (e) => {
     }
 };
 
-const tech_names = props.project.web_dev.tech_used.map(
-    (obj) => obj.tech_name
-);
-const feat_names = props.project.web_dev.web_feat.map(
-    (obj) => obj.feat_name
-);
-const img_paths = props.project.image_showcase.map(
-    (obj) => obj.img_path
-);
+const tech_names = props.project.web_dev.tech_used.map((obj) => obj.tech_name);
+const feat_names = props.project.web_dev.web_feat.map((obj) => obj.feat_name);
 
 const form = useForm({
     proj_title: props.project.proj_title,
@@ -74,12 +69,10 @@ const form = useForm({
     live_link: props.project.web_dev.live_link,
     image: [],
     img_thumbnail: props.project.img_thumbnail,
-    category: "web_dev",
-    remember: false,
 });
 
 const submit = () => {
-    form.put(route("web-development.update", props.project.id), {
+    form.post(route("web-development.update", props.project.id), {
         onSuccess: () => emit("close_emit"),
     });
 };
@@ -105,7 +98,7 @@ const submit = () => {
                     <h2
                         class="text-4xl font-bold max-xl:text-3xl max-md:text-2xl"
                     >
-                        Edit Project 
+                        Edit Project
                     </h2>
                     <img
                         :src="exit"
@@ -131,7 +124,6 @@ const submit = () => {
                             type="text"
                             class="mt-1 block w-full"
                             v-model="form.proj_title"
-                            required
                             autofocus
                             autocomplete="username"
                             placeholder="Project Title"
@@ -189,7 +181,7 @@ const submit = () => {
                     </div>
 
                     <!-- image upload showcase -->
-                    <div class="" v-if="img_paths.length != 0">
+                    <div class="" v-if="url.length != 0">
                         <InputLabel
                             value="Select image thumbnail"
                             class="text-white"
@@ -197,7 +189,7 @@ const submit = () => {
                         <div
                             class="w-full bg-input_bg h-fit rounded-b-md py-3 px-3 flex flex-wrap gap-5 rounded-md"
                         >
-                            <div v-for="(src, index) in img_paths" class="h-36">
+                            <div v-for="(src, index) in url" class="h-36">
                                 <input
                                     type="radio"
                                     :id="'image' + index"
@@ -343,7 +335,6 @@ const submit = () => {
                                 type="text"
                                 class="mt-1 block w-full"
                                 v-model="form.github_link"
-                                required
                                 autofocus
                                 placeholder="Github Link"
                             />
@@ -367,7 +358,6 @@ const submit = () => {
                                 type="text"
                                 class="mt-1 block w-full"
                                 v-model="form.live_link"
-                                required
                                 autofocus
                                 placeholder="Link"
                             />
@@ -384,7 +374,7 @@ const submit = () => {
                             :class="{ 'opacity-25': form.processing }"
                             :disabled="form.processing"
                         >
-                           Update
+                            Update
                         </PrimaryButton>
                     </div>
                 </form>

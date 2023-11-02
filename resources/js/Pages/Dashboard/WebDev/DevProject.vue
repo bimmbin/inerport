@@ -191,7 +191,7 @@ const show_edit = ref(false);
                 >
                     <div class="relative w-80 min-h-40 box-border">
                         <img
-                            :src="rec_proj.img_thumbnail"
+                            :src="rec_proj.image_showcase[project.img_thumbnail].img_path"
                             class="object-cover w-full h-40"
                         />
                         <div
