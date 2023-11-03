@@ -60,7 +60,10 @@ const show_edit = ref(false);
 
 <template>
     <div v-if="show_edit">
-        <EditProj @close_emit="show_edit = !show_edit" :project="project"></EditProj>
+        <EditProj
+            @close_emit="show_edit = !show_edit"
+            :project="project"
+        ></EditProj>
     </div>
     <DialogOverlay route_back="web-development.index">
         <div class="flex justify-between items-start w-full mb-5 max-sm:mb-2">
@@ -69,10 +72,19 @@ const show_edit = ref(false);
                     {{ project.proj_title }}
                 </h2>
                 <div class="mr-10 flex gap-5 max-sm:gap-2 sm:hidden">
+                    <div
+                        @click="show_edit = !show_edit"
+                        class="cursor-pointer border-[2px] border-gray-600 active:bg-main rounded-full p-2 hover:bg-gray-600 w-fit h-fit"
+                    >
+                        <img
+                            :src="edit"
+                            class="cursor-pointer select-none max-xl:h-7 max-md:h-4"
+                        />
+                    </div>
                     <a
                         :href="'https://www.' + project.web_dev.live_link"
                         target="_blank"
-                        class="bg-red-500"
+                        class="cursor-pointer border-[2px] border-gray-600 active:bg-main rounded-full p-1 hover:bg-gray-600 w-fit h-fit"
                     >
                         <img
                             :src="live"
@@ -82,11 +94,11 @@ const show_edit = ref(false);
                     <a
                         :href="'https://www.' + project.web_dev.github_link"
                         target="_blank"
-                        class="bg-red-500"
+                        class="cursor-pointer border-[2px] border-gray-600 active:bg-main rounded-full p-1 hover:bg-gray-600 w-fit h-fit"
                     >
                         <img
                             :src="github"
-                            class="h-20 select-none max-xl:h-7 max-md:h-6"
+                            class="h-20 cursor-pointer select-none max-xl:h-7 max-md:h-6"
                         />
                     </a>
                 </div>
@@ -166,7 +178,7 @@ const show_edit = ref(false);
 
         <!-- tech used -->
         <div class="mt-5">
-            <h2 class="text-3xl font-semibold">Technology Used</h2>
+            <h2 class="text-3xl font-semibold max-sm:text-xl">Technology Used</h2>
             <div class="flex flex-wrap gap-2">
                 <span
                     v-for="tech in project.web_dev.tech_used"
@@ -189,9 +201,12 @@ const show_edit = ref(false);
                     :key="rec_proj.id"
                     class="pr-2"
                 >
-                    <div class="relative w-80 min-h-40 box-border">
+                    <div class="relative w-80 max-sm:w-full min-h-40 box-border">
                         <img
-                            :src="rec_proj.image_showcase[project.img_thumbnail].img_path"
+                            :src="
+                                rec_proj.image_showcase[rec_proj.img_thumbnail]
+                                    .img_path
+                            "
                             class="object-cover w-full h-40"
                         />
                         <div

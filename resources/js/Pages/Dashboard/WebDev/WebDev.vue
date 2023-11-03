@@ -40,7 +40,7 @@ watch(show, (newValue) => {
 
     <!-- Main content -->
     <div
-        class="h-full px-5 max-sm:px-0 overflow-auto max-md:mt-24 max-md:overflow-y-hidden"
+        class="h-fit px-5 max-sm:px-0 overflow-auto max-md:mt-24 max-md:overflow-y-hidden"
     >
         
         <div
