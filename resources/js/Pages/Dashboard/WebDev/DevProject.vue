@@ -7,18 +7,20 @@ export default {
 </script>
 
 <script setup>
-import { Head, Link } from "@inertiajs/vue3";
+import { useForm, Link } from "@inertiajs/vue3";
 import { ref } from "vue";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 
 import DialogOverlay from "@/Components/DialogOverlay.vue";
 import EditProj from "@/Components/WebDev/EditProj.vue";
+import SureDialog from "@/Components/SureDialog.vue";
 
 const exit = ref("/img/exit.svg");
 const live = ref("/img/live.svg");
 const github = ref("/img/github.svg");
 const edit = ref("/img/edit.svg");
+const delete_icon = ref("/img/delete.svg");
 
 const { project, recommend_projects } = defineProps({
     project: Object,
@@ -56,6 +58,16 @@ function handleResize() {
 window.addEventListener("resize", handleResize);
 
 const show_edit = ref(false);
+const show_delete = ref(false);
+
+
+const form = useForm({
+    proj_title: "",
+});
+
+const submit = () => {
+    form.post(route("web-development.destroy", project.id));
+};
 </script>
 
 <template>
@@ -65,6 +77,14 @@ const show_edit = ref(false);
             :project="project"
         ></EditProj>
     </div>
+    <div v-if="show_delete">
+        <SureDialog
+            :project="project"
+            question="Are you sure you want to delete this project?"
+            @close_sure="show_delete = !show_delete"
+            @delete_emit="submit()"
+        />
+    </div>
     <DialogOverlay route_back="web-development.index">
         <div class="flex justify-between items-start w-full mb-5 max-sm:mb-2">
             <div class="flex flex-col gap-3">
@@ -72,6 +92,16 @@ const show_edit = ref(false);
                     {{ project.proj_title }}
                 </h2>
                 <div class="mr-10 flex gap-5 max-sm:gap-2 sm:hidden">
+                    <div
+                        v-if="$page.props.auth.user"
+                        @click="show_delete = !show_delete"
+                        class="cursor-pointer border-[2px] border-red-600 active:bg-red-400 rounded-full p-2 hover:bg-red-500 w-fit h-fit"
+                    >
+                        <img
+                            :src="delete_icon"
+                            class="cursor-pointer select-none max-xl:h-7 max-md:h-4"
+                        />
+                    </div>
                     <div
                         v-if="$page.props.auth.user"
                         @click="show_edit = !show_edit"
@@ -106,6 +136,16 @@ const show_edit = ref(false);
             </div>
             <div class="flex items-center gap-5">
                 <div class="mr-10 flex gap-5 max-sm:hidden">
+                    <div
+                        v-if="$page.props.auth.user"
+                        @click="show_delete = !show_delete"
+                        class="cursor-pointer border-[2px] border-red-600 active:bg-red-400 rounded-full p-2 hover:bg-red-500 w-fit h-fit"
+                    >
+                        <img
+                            :src="delete_icon"
+                            class="h-6 select-none max-xl:h- max-md:h-5"
+                        />
+                    </div>
                     <div
                         v-if="$page.props.auth.user"
                         @click="show_edit = !show_edit"
@@ -149,7 +189,6 @@ const show_edit = ref(false);
         <carousel
             :items-to-show="1"
             :wrap-around="true"
-            :breakpoints="breakpoints"
         >
             <slide v-for="image in project.image_showcase" :key="image.id">
                 <img

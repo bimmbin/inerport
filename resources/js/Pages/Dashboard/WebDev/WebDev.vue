@@ -12,7 +12,6 @@ import { ref, watch } from "vue";
 
 import CardProj from "@/Components/CardProj.vue";
 import CreateProj from "@/Components/WebDev/CreateProj.vue";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
 
 const { projects } = defineProps({
     projects: Object,

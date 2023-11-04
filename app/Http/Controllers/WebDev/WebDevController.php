@@ -207,7 +207,14 @@ class WebDevController extends Controller
    * Remove the specified resource from storage.
    */
   public function destroy(string $id)
-  {
-    //
+  { 
+    $project = Project::with('image_showcase')->findOrFail($id);
+    foreach ($project->image_showcase as $image) {
+      $proper_img_path = ltrim($image->img_path, '/storage');
+      Storage::disk('public')->delete($proper_img_path);
+    }
+    $project->delete();
+
+    return redirect()->route('web-development.index');
   }
 }

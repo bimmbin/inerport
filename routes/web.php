@@ -34,9 +34,11 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('web-development', WebDevController::class)->except([
   'update',
+  'destroy',
 ]);;
 
 Route::post('/web-development/{id}', [WebDevController::class, 'update'])->name('web-development.update');
+Route::post('/web-development/{id}/delete', [WebDevController::class, 'destroy'])->name('web-development.destroy');
 
 
 Route::resource('ui-design', DesignController::class);

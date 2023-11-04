@@ -12,9 +12,9 @@ const show_nav = ref(false);
 </script>
 
 <template>
-    <div class="!font-pop bg-portbg text-white w-screen overflow-x-hidden">
+    <div class="!font-pop bg-portbg text-white w-full overflow-x-hidden">
         <div
-            class="w-[1200px] mx-auto max-xl:w-[800px] max-md:w-screen max-md:px-5"
+            class="w-[1200px] mx-auto max-xl:w-[800px] max-md:w-full max-md:px-5"
         >
             <!-- Header -->
             <div
@@ -62,7 +62,7 @@ const show_nav = ref(false);
 
         <!-- Main content -->
         <main
-            class="w-[1200px] mx-auto max-xl:w-[800px] max-md:w-screen max-md:px-5"
+            class="w-[1200px] mx-auto max-xl:w-[800px] max-md:w-full max-md:px-5"
         >
             <slot></slot>
         </main>
