@@ -73,6 +73,7 @@ const show_edit = ref(false);
                 </h2>
                 <div class="mr-10 flex gap-5 max-sm:gap-2 sm:hidden">
                     <div
+                        v-if="$page.props.auth.user"
                         @click="show_edit = !show_edit"
                         class="cursor-pointer border-[2px] border-gray-600 active:bg-main rounded-full p-2 hover:bg-gray-600 w-fit h-fit"
                     >
@@ -106,6 +107,7 @@ const show_edit = ref(false);
             <div class="flex items-center gap-5">
                 <div class="mr-10 flex gap-5 max-sm:hidden">
                     <div
+                        v-if="$page.props.auth.user"
                         @click="show_edit = !show_edit"
                         class="cursor-pointer border-[2px] border-gray-600 active:bg-main rounded-full p-2 hover:bg-gray-600"
                     >
@@ -167,10 +169,10 @@ const show_edit = ref(false);
         <!-- features -->
         <div class="mt-5">
             <h2 class="text-3xl font-semibold max-sm:text-xl">Features</h2>
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-2 max-sm:gap-1 mt-2">
                 <span
                     v-for="feat in project.web_dev.web_feat"
-                    class="bg-main px-5 py-2 rounded-full font-semibold mt-2 max-sm:text-sm max-sm:px-3 max-sm:py-2"
+                    class="bg-main_light px-5 py-2 rounded-full font-medium max-sm:text-sm max-sm:px-3 max-sm:py-2"
                     >{{ feat.feat_name }}</span
                 >
             </div>
@@ -178,11 +180,13 @@ const show_edit = ref(false);
 
         <!-- tech used -->
         <div class="mt-5">
-            <h2 class="text-3xl font-semibold max-sm:text-xl">Technology Used</h2>
-            <div class="flex flex-wrap gap-2">
+            <h2 class="text-3xl font-semibold max-sm:text-xl">
+                Technology Used
+            </h2>
+            <div class="flex flex-wrap gap-2 max-sm:gap-1 mt-2">
                 <span
                     v-for="tech in project.web_dev.tech_used"
-                    class="bg-main px-5 py-2 rounded-full font-semibold mt-2 max-sm:text-sm max-sm:px-3 max-sm:py-2"
+                    class="bg-main_light px-5 py-2 rounded-full font-medium max-sm:text-sm max-sm:px-3 max-sm:py-2"
                     >{{ tech.tech_name }}</span
                 >
             </div>
@@ -201,7 +205,9 @@ const show_edit = ref(false);
                     :key="rec_proj.id"
                     class="pr-2"
                 >
-                    <div class="relative w-80 max-sm:w-full min-h-40 box-border">
+                    <div
+                        class="relative w-80 max-sm:w-full min-h-40 box-border"
+                    >
                         <img
                             :src="
                                 rec_proj.image_showcase[rec_proj.img_thumbnail]

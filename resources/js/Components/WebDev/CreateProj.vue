@@ -9,6 +9,7 @@ import TextInput from "@/Components/TextInput.vue";
 
 const exit = ref("/img/exit.svg");
 const remove = ref("/img/remove.svg");
+const checked = ref("/img/checked.svg");
 
 const emit = defineEmits(["close_emit"]);
 
@@ -204,12 +205,12 @@ const submit = () => {
                                         }"
                                     />
                                     <div
-                                        class="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-main bg-opacity-70 text-xl text-black"
+                                        class="absolute top-0 left-0 w-full bg-main bg-opacity-5 h-full flex items-center justify-center text-xl text-black"
                                         :class="{
                                             hidden: form.img_thumbnail != index,
                                         }"
                                     >
-                                        Selected
+                                        <img :src="checked" alt="">
                                     </div>
                                 </label>
                             </div>

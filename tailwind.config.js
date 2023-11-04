@@ -24,7 +24,7 @@ export default {
                 main: "#F15A24",
                 input_bg: "#1B1B1B",
                 main_hover: "#FF9C79",
-
+                main_light: "#673E2F",
             },
         },
     },
