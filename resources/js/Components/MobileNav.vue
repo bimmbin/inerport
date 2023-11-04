@@ -16,11 +16,13 @@ const logo = ref("/img/logo.png");
     <div
         class="w-screen fixed top-0 left-0 h-screen bg-black bg-opacity-80 z-10 flex"
     >
-        <div class="flex-1 h-full bg-gray2 px-7 py-5 z-20 flex flex-col gap-20">
+        <div
+            class="flex-1 h-full bg-gray2 px-7 max-sm:px-5 py-5 z-20 flex flex-col gap-20"
+        >
             <!-- Logo -->
             <Link :href="route('home')" class="flex items-center gap-2 px-3">
-                <img :src="logo" alt="" class="h-7" />
-                <h1 class="text-3xl font-semibold">Vinrecs</h1>
+                <img :src="logo" alt="" class="h-7 max-md:h-6" />
+                <h1 class="text-3xl max-md:text-2xl font-semibold">Vinrecs</h1>
             </Link>
 
             <!-- navigation -->
@@ -32,27 +34,38 @@ const logo = ref("/img/logo.png");
                     @click="$emit('close_emit')"
                 />
                 <DashDrop image="project" nav_name="Projects">
-                    <DashNav
-                        image="webdev"
-                        nav_name="Web Development"
-                        :href="route('web-development.index')"
-                        @click="$emit('close_emit')"
-                        class="w-60"
-                    />
-                    <DashNav
+                    <div class="flex gap-2">
+                        <div class="w-5"></div>
+                        <DashNav
+                            image="webdev"
+                            nav_name="Web Development"
+                            :href="route('web-development.index')"
+                            @click="$emit('close_emit')"
+                            class="w-full"
+                        />
+                    </div>
+                    <div class="flex gap-2">
+                        <div class="w-5"></div>
+                        <DashNav
                         image="design-icon"
                         nav_name="Ui Designs"
                         :href="route('ui-design.index')"
                         @click="$emit('close_emit')"
-                        class="w-60"
+                        class="w-full"
                     />
-                    <DashNav
+                    </div>
+                   
+                    <div class="flex gap-2">
+                        <div class="w-5"></div>
+                        <DashNav
                         image="schema"
                         nav_name="Database Schemas"
                         :href="route('home')"
                         @click="$emit('close_emit')"
-                        class="w-60"
+                        class="w-full"
                     />
+                    </div>
+                    
                 </DashDrop>
                 <DashNav
                     image="about"

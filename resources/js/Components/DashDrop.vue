@@ -22,7 +22,7 @@ const show_details = ref(true);
     <!-- collapse header -->
     <div
         @click="show_details = !show_details"
-        class="flex justify-between items-center cursor-pointer hover:bg-gray2 px-3 py-2 rounded-md"
+        class="flex justify-between items-center cursor-pointer hover:bg-gray3 active:bg-gray3 px-3 py-2 rounded-md"
     >
         <div class="flex justify-between items-center w-40">
             <div class="flex items-center gap-3">
@@ -42,7 +42,7 @@ const show_details = ref(true);
     <!-- collapse details -->
     <Collapse
         :when="show_details"
-        class="w-full overflow-hidden ml-8 flex flex-col gap-2 translate-y-[-1rem]"
+        class="w-full overflow-hidden flex flex-col gap-2 translate-y-[-1rem]"
     >
         <slot></slot>
     </Collapse>

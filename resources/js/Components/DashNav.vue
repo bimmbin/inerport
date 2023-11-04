@@ -25,11 +25,11 @@ const img_path = ref("/img/");
 </script>
 
 <template>
-    <Link :href="href" :class="classes">
+    <Link :href="href" :class="classes" class="active:bg-gray3 hover:bg-gray3">
         <img
             :src="img_path + image + '.svg'"
             class="w-5 h-5" 
         />
-        <span class="text-white text-lg whitespace-nowrap">{{ nav_name }}</span>
+        <span class="text-white text-lg whitespace-nowrap max-sm:text-base ">{{ nav_name }}</span>
     </Link>
 </template>
