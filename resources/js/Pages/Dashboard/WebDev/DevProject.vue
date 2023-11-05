@@ -7,7 +7,7 @@ export default {
 </script>
 
 <script setup>
-import { useForm, Link } from "@inertiajs/vue3";
+import { useForm, Link, Head } from "@inertiajs/vue3";
 import { ref } from "vue";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
@@ -71,6 +71,8 @@ const submit = () => {
 </script>
 
 <template>
+    <Head :title="project.proj_title" />
+
     <div v-if="show_edit">
         <EditProj
             @close_emit="show_edit = !show_edit"
@@ -203,7 +205,7 @@ const submit = () => {
             </template>
         </carousel>
 
-        <p class="mt-5 max-sm:text-sm">{{ project.proj_description }}</p>
+        <pre class="mt-5 text-lg font-light max-sm:text-sm w-full whitespace-pre-wrap font-pop">{{ project.proj_description }}</pre>
 
         <!-- features -->
         <div class="mt-5">

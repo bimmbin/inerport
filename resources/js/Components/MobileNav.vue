@@ -14,7 +14,7 @@ const logo = ref("/img/logo.png");
 
 <template>
     <div
-        class="w-screen fixed top-0 left-0 h-screen bg-black bg-opacity-80 z-10 flex"
+        class="w-screen fixed top-0 left-0 h-screen bg-black bg-opacity-80 z-10 flex select-none"
     >
         <div
             class="flex-1 h-full bg-gray2 px-7 max-sm:px-5 py-5 z-20 flex flex-col gap-20"
