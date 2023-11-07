@@ -115,7 +115,7 @@ const submit = () => {
                         />
                     </div>
                     <a
-                        :href="'https://www.' + project.web_dev.live_link"
+                        :href="'http://www.' + project.web_dev.live_link"
                         target="_blank"
                         class="cursor-pointer border-[2px] border-gray-600 active:bg-main rounded-full p-1 hover:bg-gray-600 w-fit h-fit"
                     >
@@ -125,7 +125,7 @@ const submit = () => {
                         />
                     </a>
                     <a
-                        :href="'https://www.' + project.web_dev.github_link"
+                        :href="'http://www.' + project.web_dev.github_link"
                         target="_blank"
                         class="cursor-pointer border-[2px] border-gray-600 active:bg-main rounded-full p-1 hover:bg-gray-600 w-fit h-fit"
                     >
@@ -159,7 +159,7 @@ const submit = () => {
                         />
                     </div>
                     <a
-                        :href="'https://www.' + project.web_dev.live_link"
+                        :href="'http://www.' + project.web_dev.live_link"
                         target="_blank"
                         class="cursor-pointer border-[2px] active:bg-main border-gray-600 rounded-full p-2 hover:bg-gray-600"
                     >
@@ -169,7 +169,7 @@ const submit = () => {
                         />
                     </a>
                     <a
-                        :href="'https://www.' + project.web_dev.github_link"
+                        :href="'http://www.' + project.web_dev.github_link"
                         target="_blank"
                         class="cursor-pointer border-[2px] active:bg-main border-gray-600 rounded-full p-2 hover:bg-gray-600"
                     >
