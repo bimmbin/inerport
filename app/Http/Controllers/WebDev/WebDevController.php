@@ -179,25 +179,21 @@ class WebDevController extends Controller
     $project->web_dev->save();
     
     //TechUsed model creation
+    $project->web_dev->tech_used()->delete();
     foreach ($request->tech_used as $tech) {
-      $tech_row = TechUsed::firstOrNew(['tech_name' => $tech], [
-        'web_dev_id' => $project->web_dev->id
+      TechUsed::create([
+        'web_dev_id' => $project->web_dev->id,
+        'tech_name' => $tech,
       ]);
-
-      if (!$tech_row->exists) {
-        $tech_row->save();
-      }
     }
 
     //WebFeat model creation
+    $project->web_dev->web_feat()->delete();
     foreach ($request->web_feat as $feat) {
-      $feat_row = WebFeat::firstOrNew(['feat_name' => $feat], [
-        'web_dev_id' => $project->web_dev->id
+      WebFeat::create([
+        'web_dev_id' => $project->web_dev->id,
+        'feat_name' => $feat,
       ]);
-
-      if (!$feat_row->exists) {
-        $feat_row->save();
-      }
     }
 
     return redirect()->route('web-development.show', $id);
