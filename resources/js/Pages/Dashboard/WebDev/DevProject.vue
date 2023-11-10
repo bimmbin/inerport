@@ -246,7 +246,7 @@ const submit = () => {
                     :key="rec_proj.id"
                     class="pr-2"
                 >
-                    <div
+                    <a :href="route('web-development.show', rec_proj.id)"
                         class="relative w-80 max-sm:w-full min-h-40 box-border"
                     >
                         <img
@@ -266,7 +266,7 @@ const submit = () => {
                                 Web Development
                             </h2>
                         </div>
-                    </div>
+                      </a>
                 </Slide>
             </Carousel>
         </div>
