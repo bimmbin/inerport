@@ -63,7 +63,7 @@ watch(show, (newValue) => {
                     Create
                 </div>
             </div>
-            <span class="mr-[0.5%]">Sort by:</span>
+            <!-- <span class="mr-[0.5%]">Sort by:</span> -->
         </div>
         <div
             class="w-full flex flex-wrap gap-3 max-xl:flex-nowrap max-xl:flex-col max-sm:px-0 justify-stretch"

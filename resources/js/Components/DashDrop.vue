@@ -24,7 +24,7 @@ const show_details = ref(true);
         @click="show_details = !show_details"
         class="flex justify-between items-center cursor-pointer hover:bg-gray3 active:bg-gray3 px-3 py-2 rounded-md"
     >
-        <div class="flex justify-between items-center w-full">
+        <div class="flex justify-between items-center w-full gap-8">
             <div class="flex items-center gap-3">
                 <img :src="img_path + image + '.svg'" class="w-5" />
                 <span class="text-white text-lg">{{ nav_name }}</span>

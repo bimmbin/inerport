@@ -6,6 +6,7 @@ use Illuminate\Foundation\Application;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DesignController;
+use App\Http\Controllers\Schema\SchemaController;
 use App\Http\Controllers\WebDev\WebDevController;
 
 /*
@@ -42,6 +43,7 @@ Route::post('/web-development/{id}/delete', [WebDevController::class, 'destroy']
 
 
 Route::resource('ui-design', DesignController::class);
+Route::resource('database-schema', SchemaController::class);
 
 
 require __DIR__.'/auth.php';

@@ -10,7 +10,6 @@ const logo = ref("/img/logo.png");
 const burger = ref("/img/burger.svg");
 
 const show_nav = ref(false);
-
 </script>
 
 <template>
@@ -21,24 +20,37 @@ const show_nav = ref(false);
         >
             <DashNav image="home" nav_name="Home" :href="route('home')" />
             <DashDrop image="project" nav_name="Projects">
-                <DashNav
-                    image="webdev"
-                    nav_name="Web Development"
-                    :href="route('web-development.index')"
-                    class="w-60"
-                />
-                <DashNav
-                    image="design-icon"
-                    nav_name="Ui Designs"
-                    :href="route('ui-design.index')"
-                    class="w-60"
-                />
-                <DashNav
-                    image="schema"
-                    nav_name="Database Schemas"
-                    :href="route('home')"
-                    class="w-60"
-                />
+                <div class="flex gap-2">
+                    <div class="w-5"></div>
+                    <DashNav
+                        image="webdev"
+                        nav_name="Web Development"
+                        :href="route('web-development.index')"
+                        @click="$emit('close_emit')"
+                        class="w-full"
+                    />
+                </div>
+                <div class="flex gap-2">
+                    <div class="w-5"></div>
+                    <DashNav
+                        image="design-icon"
+                        nav_name="Ui Designs"
+                        :href="route('ui-design.index')"
+                        @click="$emit('close_emit')"
+                        class="w-full"
+                    />
+                </div>
+
+                <div class="flex gap-2">
+                    <div class="w-5"></div>
+                    <DashNav
+                        image="schema"
+                        nav_name="Database Schemas"
+                        :href="route('database-schema.index')"
+                        @click="$emit('close_emit')"
+                        class="w-full"
+                    />
+                </div>
             </DashDrop>
             <DashNav
                 image="about"
@@ -50,12 +62,23 @@ const show_nav = ref(false);
                 nav_name="Contact"
                 :href="route('ui-design.index')"
             />
-            
-            <Link v-if="$page.props.auth.user" :href="route('logout')" method="post" as="button" class="text-white border border-main rounded-md py-3">
-              Logout
+
+            <Link
+                v-if="$page.props.auth.user"
+                :href="route('logout')"
+                method="post"
+                as="button"
+                class="text-white border border-main rounded-md py-3"
+            >
+                Logout
             </Link>
-            <Link v-else :href="route('login')" as="button" class="text-white border border-main rounded-md py-3">
-              Login
+            <Link
+                v-else
+                :href="route('login')"
+                as="button"
+                class="text-white border border-main rounded-md py-3"
+            >
+                Login
             </Link>
         </div>
         <div
@@ -63,18 +86,21 @@ const show_nav = ref(false);
         >
             <!-- Header -->
             <div
-                class="flex justify-between items-center bg-gray1 absolute top-0 left-0 w-screen py-5 px-5 text-white md:hidden"
+                class="flex justify-between items-center bg-gray1 absolute z-10 top-0 left-0 w-screen py-5 px-5 text-white md:hidden"
             >
                 <Link :href="route('home')">
                     <img :src="logo" alt="" class="h-8" />
                 </Link>
-                <div class="lg:hidden cursor-pointer select-none" @click="show_nav = !show_nav">
+                <div
+                    class="lg:hidden cursor-pointer select-none"
+                    @click="show_nav = !show_nav"
+                >
                     <img :src="burger" alt="" class="h-6" />
                 </div>
             </div>
             <!-- Responsive Nav -->
             <div v-if="show_nav">
-                <MobileNav @close_emit="show_nav = !show_nav"/>
+                <MobileNav @close_emit="show_nav = !show_nav" />
             </div>
             <slot></slot>
         </div>

@@ -60,7 +60,7 @@ const logo = ref("/img/logo.png");
                         <DashNav
                         image="schema"
                         nav_name="Database Schemas"
-                        :href="route('home')"
+                        :href="route('database-schema.index')"
                         @click="$emit('close_emit')"
                         class="w-full"
                     />

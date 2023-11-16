@@ -60,6 +60,9 @@ window.addEventListener("resize", handleResize);
 const show_edit = ref(false);
 const show_delete = ref(false);
 
+const getback = () => {
+    window.history.back();
+};
 
 const form = useForm({
     proj_title: "",
@@ -179,19 +182,17 @@ const submit = () => {
                         />
                     </a>
                 </div>
-                <Link :href="route('web-development.index')">
+
+                <a href="#" @click="getback()">
                     <img
                         :src="exit"
                         class="h-7 cursor-pointer select-none max-xl:h-6 max-md:h-5 max-sm:mt-2"
                     />
-                </Link>
+                </a>
             </div>
         </div>
 
-        <carousel
-            :items-to-show="1"
-            :wrap-around="true"
-        >
+        <carousel :items-to-show="1" :wrap-around="true">
             <slide v-for="image in project.image_showcase" :key="image.id">
                 <img
                     :src="image.img_path"
@@ -205,7 +206,10 @@ const submit = () => {
             </template>
         </carousel>
 
-        <pre class="mt-5 text-lg font-light max-sm:text-sm w-full whitespace-pre-wrap font-pop">{{ project.proj_description }}</pre>
+        <pre
+            class="mt-5 text-lg font-light max-sm:text-sm w-full whitespace-pre-wrap font-pop"
+            >{{ project.proj_description }}</pre
+        >
 
         <!-- features -->
         <div class="mt-5">
@@ -246,7 +250,8 @@ const submit = () => {
                     :key="rec_proj.id"
                     class="pr-2"
                 >
-                    <a :href="route('web-development.show', rec_proj.id)"
+                    <a
+                        :href="route('web-development.show', rec_proj.id)"
                         class="relative w-80 max-sm:w-full min-h-40 box-border"
                     >
                         <img
@@ -266,7 +271,7 @@ const submit = () => {
                                 Web Development
                             </h2>
                         </div>
-                      </a>
+                    </a>
                 </Slide>
             </Carousel>
         </div>

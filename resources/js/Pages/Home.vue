@@ -18,6 +18,10 @@ import FooterLists from "@/Components/HomeComponents/FooterLists.vue";
 import FootHeader from "@/Components/HomeComponents/FootHeader.vue";
 import AboutCard from "@/Components/HomeComponents/AboutCard.vue";
 
+const { feat_projects } = defineProps({
+    feat_projects: Object,
+});
+
 const arrow = ref("/img/arrow.svg");
 const bulb = ref("/img/bulb.svg");
 const design = ref("/img/design.svg");
@@ -52,7 +56,8 @@ const handshake = ref("/img/handshake.svg");
 
             <div class="flex items-center gap-2">
                 <img :src="arrow" alt="" class="w-6 max-xl:w-5 max-md:w-4" />
-                <Link :href="route('web-development.index')"
+                <Link
+                    :href="route('web-development.index')"
                     class="text-main text-lg underline max-xl:text-md max-md:text-sm"
                 >
                     See all projects
@@ -62,30 +67,14 @@ const handshake = ref("/img/handshake.svg");
         <div
             class="mt-20 max-sm:mt-10 flex flex-wrap justify-between max-md:flex-col"
         >
-            <FeaturedProjects
-                stack="Laravel"
-                projTitle="Paperless Clearance Management System"
-                liveLink="github.com/bimmbin/clearance"
-                detailsLink="facebook.com"
-            />
-            <FeaturedProjects
-                stack="Laravel"
-                projTitle="Automated Grading System"
-                liveLink="github.com/bimmbin/grading"
-                detailsLink="facebook.com"
-            />
-            <FeaturedProjects
-                stack="Laravel Inertia"
-                projTitle="Fandemonium"
-                liveLink="fandemo.ca"
-                detailsLink="facebook.com"
-            />
-            <FeaturedProjects
-                stack="PHP"
-                projTitle="Blog Website"
-                liveLink="github.com/bimmbin/blog"
-                detailsLink="facebook.com"
-            />
+            <div v-for="feat_project in feat_projects">
+                <FeaturedProjects
+                    stack="Laravel"
+                    :projTitle="feat_project.proj_title"
+                    :liveLink="feat_project.web_dev.live_link"
+                    :detailsLink="feat_project.id"
+                />
+            </div>
         </div>
     </div>
 
@@ -163,7 +152,9 @@ const handshake = ref("/img/handshake.svg");
             <!-- reusable -->
             <div class="max-sm:w-full">
                 <FootHeader> Sitemap </FootHeader>
-                <div class="flex flex-col items-start max-sm:items-center justify-center max-sm:gap-2">
+                <div
+                    class="flex flex-col items-start max-sm:items-center justify-center max-sm:gap-2"
+                >
                     <!-- make these router links -->
                     <FooterLists listname="Home" :isLink="false" />
                     <FooterLists listname="Projects" :isLink="false" />
@@ -174,7 +165,9 @@ const handshake = ref("/img/handshake.svg");
             <!-- reusable -->
             <div class="max-sm:w-full">
                 <FootHeader> Socials </FootHeader>
-                <div class="flex flex-col items-start max-sm:items-center justify-center max-sm:gap-2">
+                <div
+                    class="flex flex-col items-start max-sm:items-center justify-center max-sm:gap-2"
+                >
                     <FooterLists
                         listname="LinkedIn"
                         :isLink="true"
@@ -200,7 +193,9 @@ const handshake = ref("/img/handshake.svg");
             <!-- reusable -->
             <div class="max-sm:w-full">
                 <FootHeader> Capabilities </FootHeader>
-                <div class="flex flex-col items-start max-sm:items-center justify-center max-sm:gap-2">
+                <div
+                    class="flex flex-col items-start max-sm:items-center justify-center max-sm:gap-2"
+                >
                     <FooterLists
                         listname="Web App Development"
                         :isLink="false"
@@ -213,7 +208,9 @@ const handshake = ref("/img/handshake.svg");
             <!-- reusable -->
             <div class="max-sm:w-full">
                 <FootHeader> Tools/Frameworks </FootHeader>
-                <div class="flex flex-col items-start max-sm:items-center justify-center max-sm:gap-2">
+                <div
+                    class="flex flex-col items-start max-sm:items-center justify-center max-sm:gap-2"
+                >
                     <FooterLists listname="Tailwindcss" :isLink="false" />
                     <FooterLists listname="Laravel" :isLink="false" />
                     <FooterLists listname="Vue.js" :isLink="false" />
@@ -223,7 +220,9 @@ const handshake = ref("/img/handshake.svg");
             <!-- reusable -->
             <div class="max-sm:w-full">
                 <FootHeader> Stacks </FootHeader>
-                <div class="flex flex-col items-start max-sm:items-center justify-center max-sm:gap-2">
+                <div
+                    class="flex flex-col items-start max-sm:items-center justify-center max-sm:gap-2"
+                >
                     <FooterLists listname="HTML" :isLink="false" />
                     <FooterLists listname="CSS" :isLink="false" />
                     <FooterLists listname="Javascript" :isLink="false" />

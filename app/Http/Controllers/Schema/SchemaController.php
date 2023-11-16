@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Schema;
 
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class DesignController extends Controller
+class SchemaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-      return Inertia::render('Dashboard/Design/Design');
+      return Inertia::render('Dashboard/Schema/Schema');
     }
 
     /**
