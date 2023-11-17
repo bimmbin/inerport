@@ -42,6 +42,7 @@ const logo = ref("/img/logo.png");
                             :href="route('web-development.index')"
                             @click="$emit('close_emit')"
                             class="w-full"
+                            :active="$page.component === 'Dashboard/WebDev/WebDev'"
                         />
                     </div>
                     <div class="flex gap-2">
@@ -52,6 +53,7 @@ const logo = ref("/img/logo.png");
                         :href="route('ui-design.index')"
                         @click="$emit('close_emit')"
                         class="w-full"
+                        :active="$page.component === 'Dashboard/Design/Design'"
                     />
                     </div>
                    
@@ -63,6 +65,7 @@ const logo = ref("/img/logo.png");
                         :href="route('database-schema.index')"
                         @click="$emit('close_emit')"
                         class="w-full"
+                        :active="$page.component === 'Dashboard/Schema/Schema'"
                     />
                     </div>
                     

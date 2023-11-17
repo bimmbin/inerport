@@ -22,7 +22,7 @@ const show_details = ref(true);
     <!-- collapse header -->
     <div
         @click="show_details = !show_details"
-        class="flex justify-between items-center cursor-pointer hover:bg-gray3 active:bg-gray3 px-3 py-2 rounded-md"
+        class="flex justify-between items-center cursor-pointer hover:bg-gray3 hover:bg-opacity-30 active:bg-gray3 px-3 py-2 rounded-md"
     >
         <div class="flex justify-between items-center w-full gap-8">
             <div class="flex items-center gap-3">
@@ -33,7 +33,7 @@ const show_details = ref(true);
             <img
                 :src="drop"
                 class="w-6 h-6 select-none"
-                :class="{ 'rotate-180': show_details }"
+                :class="{ '-rotate-180 transition ease-linear': show_details }"
                 alt=""
             />
         </div>

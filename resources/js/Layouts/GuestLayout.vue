@@ -4,6 +4,7 @@ import { Link } from "@inertiajs/vue3";
 import "typeface-poppins";
 
 import MobileNav from "@/Components/MobileNav.vue";
+import CurrentLink from "@/Components/CurrentLink.vue";
 
 const logo = ref("/img/logo.png");
 const burger = ref("/img/burger.svg");
@@ -22,14 +23,20 @@ const show_nav = ref(false);
             >
                 <img :src="logo" alt="" class="h-8" />
                 <nav class="max-lg:hidden">
-                    <ul class="flex gap-10">
-                        <Link :href="route('home')">Home</Link>
-                        <Link :href="route('web-development.index')"
-                            >Projects</Link
-                        >
+                    <ul class="flex gap-3">
+                        <Link :href="route('home')">
+                            <CurrentLink link_name="Home" route_name="home" />
+                        </Link>
+                        <Link :href="route('web-development.index')">
+                            <CurrentLink link_name="Projects" route_name="project" />
+                        </Link>
 
-                        <li>About</li>
-                        <li>Contact</li>
+                        <li>
+                            <CurrentLink link_name="About" route_name="about" />
+                        </li>
+                        <li>
+                            <CurrentLink link_name="Contact" route_name="contact" />
+                        </li>
                     </ul>
                 </nav>
                 <div class="max-lg:hidden">
@@ -41,7 +48,8 @@ const show_nav = ref(false);
                         class="border border-main py-1.5 px-5 rounded-full"
                         >Logout</Link
                     >
-                    <Link v-else
+                    <Link
+                        v-else
                         :href="route('login')"
                         class="border border-main py-1.5 px-5 rounded-full"
                         >Login</Link

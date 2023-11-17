@@ -1,6 +1,6 @@
 <script setup>
 import { Link } from "@inertiajs/vue3";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import DashNav from "@/Components/DashNav.vue";
 import DashDrop from "@/Components/DashDrop.vue";
 import MobileNav from "@/Components/MobileNav.vue";
@@ -16,18 +16,31 @@ const show_nav = ref(false);
     <div class="flex font-pop bg-portbg">
         <!-- navigation -->
         <div
-            class="h-screen bg-gray1 px-6 py-20 flex flex-col gap-10 max-md:hidden sticky left-0 top-0"
+            class="h-screen bg-gray1 px-6 flex flex-col gap-10 max-md:hidden sticky left-0 top-0"
         >
-            <DashNav image="home" nav_name="Home" :href="route('home')" />
+            <!-- Logo -->
+            <Link :href="route('home')" class="flex items-center gap-2 px-3 py-5">
+                <img :src="logo" alt="" class="h-7 max-md:h-6" />
+                <h1 class="text-3xl max-md:text-2xl font-semibold text-white">Vinrecs</h1>
+            </Link>
+
+            <DashNav
+                image="home"
+                nav_name="Home"
+                :href="route('home')"
+                route_name="home"
+            />
             <DashDrop image="project" nav_name="Projects">
                 <div class="flex gap-2">
                     <div class="w-5"></div>
                     <DashNav
                         image="webdev"
                         nav_name="Web Development"
+                        route_name="web-development.index"
                         :href="route('web-development.index')"
                         @click="$emit('close_emit')"
                         class="w-full"
+                        :active="$page.component === 'Dashboard/WebDev/WebDev'"
                     />
                 </div>
                 <div class="flex gap-2">
@@ -35,9 +48,11 @@ const show_nav = ref(false);
                     <DashNav
                         image="design-icon"
                         nav_name="Ui Designs"
+                        route_name="ui-design.index"
                         :href="route('ui-design.index')"
                         @click="$emit('close_emit')"
                         class="w-full"
+                        :active="$page.component === 'Dashboard/Design/Design'"
                     />
                 </div>
 
@@ -46,21 +61,25 @@ const show_nav = ref(false);
                     <DashNav
                         image="schema"
                         nav_name="Database Schemas"
+                        route_name="database-schema.index"
                         :href="route('database-schema.index')"
                         @click="$emit('close_emit')"
                         class="w-full"
+                        :active="$page.component === 'Dashboard/Schema/Schema'"
                     />
                 </div>
             </DashDrop>
             <DashNav
                 image="about"
                 nav_name="About"
+                route_name="home"
                 :href="route('web-development.index')"
             />
             <DashNav
                 image="contact"
                 nav_name="Contact"
-                :href="route('ui-design.index')"
+                route_name="home"
+                :href="route('web-development.index')"
             />
 
             <Link
