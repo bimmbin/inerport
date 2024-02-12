@@ -13,5 +13,5 @@ defineProps({
 </script>
 
 <template>
-    <div class="py-2 px-5 rounded-md" :class="{ 'bg-gray2': route().current(route_name) }">{{ link_name }}</div>
+    <div class="py-2 px-5 rounded-md hover:bg-gray2" :class="{ 'bg-gray2': route().current(route_name) }">{{ link_name }}</div>
 </template>

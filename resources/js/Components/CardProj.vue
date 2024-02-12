@@ -19,7 +19,7 @@ const eye = ref("/img/eye.svg");
         <img :src="project.image_showcase[project.img_thumbnail].img_path" alt="" class="object-cover w-full h-full opacity-60">
       </div>
       <div class="flex flex-col gap-2 px-10 py-5">
-          <p class="font-bold text-3xl max-xl:text-2xl max-md:text-xl">{{ project.proj_title }}</p>
+          <p class="font-bold text-3xl max-xl:text-2xl max-md:text-xl capitalize">{{ project.proj_title }}</p>
           <div class="flex items-center gap-10 opacity-50 font-light max-xl:text-sm max-md:text-xs">
             <a :href="'http://' + project.web_dev.live_link" target="_blank" class="flex items-center gap-2">
               <p>See live</p>

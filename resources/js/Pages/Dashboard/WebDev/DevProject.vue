@@ -8,6 +8,7 @@ export default {
 
 <script setup>
 import { useForm, Link, Head } from "@inertiajs/vue3";
+import { Collapse } from "vue-collapsed";
 import { ref } from "vue";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
@@ -59,6 +60,9 @@ window.addEventListener("resize", handleResize);
 
 const show_edit = ref(false);
 const show_delete = ref(false);
+const show_more_projects = ref(false);
+
+const drop = ref("/img/drop.svg");
 
 const getback = () => {
     window.history.back();
@@ -93,7 +97,9 @@ const submit = () => {
     <DialogOverlay route_back="web-development.index">
         <div class="flex justify-between items-start w-full mb-5 max-sm:mb-2">
             <div class="flex flex-col gap-3">
-                <h2 class="text-4xl font-bold max-xl:text-3xl max-md:text-2xl">
+                <h2
+                    class="text-4xl font-bold max-xl:text-3xl max-md:text-2xl capitalize"
+                >
                     {{ project.proj_title }}
                 </h2>
                 <div class="mr-10 flex gap-5 max-sm:gap-2 sm:hidden">
@@ -238,42 +244,55 @@ const submit = () => {
         </div>
 
         <div class="mt-5">
-            <span class="text font-semibold">Other projects</span>
-
-            <Carousel
-                :items-to-show="item_count"
-                :autoplay="5000"
-                :wrap-around="true"
+            <div
+                class="w-full flex justify-between items-center hover:bg-gray1 cursor-pointer py-3"
+                @click="show_more_projects = !show_more_projects"
             >
-                <Slide
-                    v-for="rec_proj in recommend_projects"
-                    :key="rec_proj.id"
-                    class="pr-2"
+                <span class="text font-semibold">See other projects</span>
+                <img
+                :src="drop"
+                class="w-6 h-6 select-none"
+                :class="{ '-rotate-180 transition ease-linear': show_more_projects }"
+                alt=""
+            />
+            </div>
+            <Collapse :when="show_more_projects">
+                <Carousel
+                    :items-to-show="item_count"
+                    :autoplay="5000"
+                    :wrap-around="true"
                 >
-                    <a
-                        :href="route('web-development.show', rec_proj.id)"
-                        class="relative w-80 max-sm:w-full min-h-40 box-border"
+                    <Slide
+                        v-for="rec_proj in recommend_projects"
+                        :key="rec_proj.id"
+                        class="pr-2"
                     >
-                        <img
-                            :src="
-                                rec_proj.image_showcase[rec_proj.img_thumbnail]
-                                    .img_path
-                            "
-                            class="object-cover w-full h-40"
-                        />
-                        <div
-                            class="absolute bottom-0 left-0 z-10 w-full h-fit bg-black bg-opacity-80 py-3 px-4"
+                        <a
+                            :href="route('web-development.show', rec_proj.id)"
+                            class="relative w-80 max-sm:w-full min-h-40 box-border"
                         >
-                            <h2 class="text-lg font-semibold">
-                                {{ rec_proj.proj_title }}
-                            </h2>
-                            <h2 class="font-extralight text-sm opacity-60">
-                                Web Development
-                            </h2>
-                        </div>
-                    </a>
-                </Slide>
-            </Carousel>
+                            <img
+                                :src="
+                                    rec_proj.image_showcase[
+                                        rec_proj.img_thumbnail
+                                    ].img_path
+                                "
+                                class="object-cover w-full h-40"
+                            />
+                            <div
+                                class="absolute bottom-0 left-0 z-10 w-full h-fit bg-black bg-opacity-80 py-3 px-4"
+                            >
+                                <h2 class="text-lg font-semibold">
+                                    {{ rec_proj.proj_title }}
+                                </h2>
+                                <h2 class="font-extralight text-sm opacity-60">
+                                    Web Development
+                                </h2>
+                            </div>
+                        </a>
+                    </Slide>
+                </Carousel>
+            </Collapse>
         </div>
     </DialogOverlay>
     <!-- Header -->

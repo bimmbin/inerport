@@ -26,7 +26,7 @@ const eye = ref("/img/eye.svg");
 
 <template>
     <div
-        class="w-[595px] max-xl:w-[395px] max-md:w-full bg-gray2 px-10 py-6 flex flex-col gap-20 max-xl:gap-10 max-md:gap-5 mt-[10px] justify-between"
+        class="h-full w-[595px] max-xl:w-[395px] max-md:w-full bg-gray2 px-10 py-6 flex flex-col gap-20 max-xl:gap-10 max-md:gap-5 mt-[10px] justify-between max-md:px-6"
     >
         <p class="text-xl max-xl:text-md max-md:text-sm font-light opacity-50">
             {{ props.stack }}

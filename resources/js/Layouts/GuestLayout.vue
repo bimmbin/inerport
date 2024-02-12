@@ -45,13 +45,13 @@ const show_nav = ref(false);
                         :href="route('logout')"
                         method="post"
                         as="button"
-                        class="border border-main py-1.5 px-5 rounded-full"
+                        class="border border-main py-1.5 px-5 rounded-full hover:bg-main"
                         >Logout</Link
                     >
                     <Link
                         v-else
                         :href="route('login')"
-                        class="border border-main py-1.5 px-5 rounded-full"
+                        class="border border-main py-1.5 px-5 rounded-full hover:bg-main"
                         >Login</Link
                     >
                 </div>

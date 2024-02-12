@@ -65,7 +65,7 @@ const handshake = ref("/img/handshake.svg");
             </div>
         </div>
         <div
-            class="mt-20 max-sm:mt-10 flex flex-wrap justify-between max-md:flex-col"
+            class="mt-20 max-sm:mt-10 flex justify-evenly flex-wrap max-md:flex-col gap-2"
         >
             <div v-for="feat_project in feat_projects">
                 <FeaturedProjects
