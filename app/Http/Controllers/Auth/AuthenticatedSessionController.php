@@ -34,6 +34,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $has_password = Auth::user()->has_password;
+        if($has_password == 0){
+          return redirect()->route('admin.make.password');
+        }
         return redirect()->route('web-development.index');
     }
 

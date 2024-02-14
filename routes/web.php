@@ -6,6 +6,7 @@ use Illuminate\Foundation\Application;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DesignController;
+use App\Http\Controllers\Auth\MakeNewAdminPasswordController;
 use App\Http\Controllers\Schema\SchemaController;
 use App\Http\Controllers\WebDev\WebDevController;
 
@@ -24,13 +25,16 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+  return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+  Route::get('/admin/makepassword', [MakeNewAdminPasswordController::class, 'index'])->name('admin.make.password');
+  Route::post('/admin/makepassword/store', [MakeNewAdminPasswordController::class, 'store'])->name('admin.make.password.store');
 });
 
 Route::resource('web-development', WebDevController::class)->except([
@@ -46,4 +50,5 @@ Route::resource('ui-design', DesignController::class);
 Route::resource('database-schema', SchemaController::class);
 
 
-require __DIR__.'/auth.php';
+
+require __DIR__ . '/auth.php';

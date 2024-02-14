@@ -16,6 +16,7 @@ class admin extends Seeder
     {
       User::create([
         'username' => 'bimmbin',
+        'has_password' => 0,
         'password' => Hash::make('admin123'),
       ]);
     }

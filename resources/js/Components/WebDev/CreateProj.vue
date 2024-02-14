@@ -15,6 +15,8 @@ const emit = defineEmits(["close_emit"]);
 
 const inputTech = ref("");
 const inputFeat = ref("");
+const current_stacks_orig = ref(["HTML", "CSS", "Javascript", "PHP", "Mysql", "Vue.js", "Inertia", "Laravel", "Tailwindcss"]);
+const current_stacks = ref(["HTML", "CSS", "Javascript", "PHP", "Mysql", "Vue.js", "Inertia", "Laravel", "Tailwindcss"]);
 
 const addTech = () => {
     if (inputTech.value.trim() !== "") {
@@ -22,8 +24,11 @@ const addTech = () => {
         inputTech.value = ""; // Clear the input after adding
     }
 };
-const removeTech = (index) => {
+const removeTech = (index, stack) => {
     form.tech_used.splice(index, 1);
+    if (current_stacks_orig.value.includes(stack)) {
+      current_stacks.value.push(stack);
+    }
 };
 
 const addFeat = () => {
@@ -34,6 +39,10 @@ const addFeat = () => {
 };
 const removeFeat = (index) => {
     form.web_feat.splice(index, 1);
+};
+const add_currentStack = (stack, index) => {
+    form.tech_used.push(stack);
+    current_stacks.value.splice(index, 1);
 };
 
 // upload picture
@@ -210,7 +219,7 @@ const submit = () => {
                                             hidden: form.img_thumbnail != index,
                                         }"
                                     >
-                                        <img :src="checked" alt="">
+                                        <img :src="checked" alt="" />
                                     </div>
                                 </label>
                             </div>
@@ -218,6 +227,17 @@ const submit = () => {
                     </div>
 
                     <!-- Tech Used -->
+                    <!-- current stacks -->
+                    <div class="flex flex-wrap gap-2">
+                        <div
+                            v-for="(stack, index) in current_stacks"
+                            @click="add_currentStack(stack, index)"
+                            class="bg-orange-800 px-3 py-2 text-white rounded-md hover:bg-main cursor-pointer select-none"
+                        >
+                            {{ stack }}
+                        </div>
+                    </div>
+                    <!-- input -->
                     <div class="">
                         <InputLabel
                             for="tech_used"
@@ -256,7 +276,7 @@ const submit = () => {
                                 {{ tech }}
                                 <div class="absolute top-0 right-0 z-100">
                                     <img
-                                        @click="removeTech(index)"
+                                        @click="removeTech(index, tech)"
                                         :src="remove"
                                         class="h-5 translate-x-2.5 -translate-y-1.5 cursor-pointer select-none"
                                     />
