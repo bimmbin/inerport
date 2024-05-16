@@ -33,19 +33,23 @@ const submit = () => {
     <GuestLayout>
         <Head title="Log in" />
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+        <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
             {{ status }}
         </div>
 
-        <div class="w-full h-screen flex justify-center mt-20 sm:mt-40 ">
+        <div class="flex justify-center w-full h-screen mt-20 sm:mt-40">
             <form @submit.prevent="submit" class="w-full sm:w-[25rem]">
                 <div>
-                    <InputLabel for="username" value="Username" class="text-white" />
+                    <InputLabel
+                        for="username"
+                        value="Username"
+                        class="text-white"
+                    />
 
-                    <TextInput
+                    <input
                         id="username"
                         type="text"
-                        class="mt-1 block w-full"
+                        class="mt-1 block w-full rounded-md shadow-sm bg-input_bg dark:text-gray-300 focus:border-main dark:focus:border-main focus:ring-main dark:focus:ring-main border-[#482A1F] px-3 py-2"
                         v-model="form.username"
                         required
                         autofocus
@@ -63,10 +67,10 @@ const submit = () => {
                         class="text-white"
                     />
 
-                    <TextInput
+                    <input
                         id="password"
                         type="password"
-                        class="mt-1 block w-full"
+                        class="mt-1 block w-full rounded-md shadow-sm bg-input_bg dark:text-gray-300 focus:border-main dark:focus:border-main focus:ring-main dark:focus:ring-main border-[#482A1F] px-3 py-2"
                         v-model="form.password"
                         required
                         autocomplete="current-password"
@@ -76,9 +80,9 @@ const submit = () => {
                     <InputError class="mt-2" :message="form.errors.password" />
                 </div>
 
-                <div class="flex mt-4 justify-center text-center">
+                <div class="flex justify-center mt-4 text-center">
                     <PrimaryButton
-                        class="w-full flex justify-center py-3"
+                        class="flex justify-center w-full py-3"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                     >

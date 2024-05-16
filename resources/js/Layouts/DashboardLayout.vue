@@ -16,12 +16,17 @@ const show_nav = ref(false);
     <div class="flex font-pop bg-portbg">
         <!-- navigation -->
         <div
-            class="h-screen bg-gray1 px-6 flex flex-col gap-10 max-md:hidden sticky left-0 top-0"
+            class="sticky top-0 left-0 flex flex-col h-screen gap-10 px-6 bg-gray1 max-md:hidden"
         >
             <!-- Logo -->
-            <Link :href="route('home')" class="flex items-center gap-2 px-3 py-5">
+            <Link
+                :href="route('home')"
+                class="flex items-center gap-2 px-3 py-5"
+            >
                 <img :src="logo" alt="" class="h-7 max-md:h-6" />
-                <h1 class="text-3xl max-md:text-2xl font-semibold text-white">Vinrecs</h1>
+                <h1 class="text-3xl font-semibold text-white max-md:text-2xl">
+                    Vinrecs
+                </h1>
             </Link>
 
             <DashNav
@@ -87,7 +92,7 @@ const show_nav = ref(false);
                 :href="route('logout')"
                 method="post"
                 as="button"
-                class="text-white border border-main rounded-md py-3"
+                class="py-3 text-white border rounded-md border-main hover:bg-main active:bg-[#673220]"
             >
                 Logout
             </Link>
@@ -95,7 +100,7 @@ const show_nav = ref(false);
                 v-else
                 :href="route('login')"
                 as="button"
-                class="text-white border border-main rounded-md py-3"
+                class="py-3 text-white border rounded-md border-main hover:bg-main active:bg-[#673220]"
             >
                 Login
             </Link>
@@ -105,13 +110,13 @@ const show_nav = ref(false);
         >
             <!-- Header -->
             <div
-                class="flex justify-between items-center bg-gray1 absolute z-10 top-0 left-0 w-screen py-5 px-5 text-white md:hidden"
+                class="absolute top-0 left-0 z-10 flex items-center justify-between w-screen px-5 py-5 text-white bg-gray1 md:hidden"
             >
                 <Link :href="route('home')">
                     <img :src="logo" alt="" class="h-8" />
                 </Link>
                 <div
-                    class="lg:hidden cursor-pointer select-none"
+                    class="cursor-pointer select-none lg:hidden"
                     @click="show_nav = !show_nav"
                 >
                     <img :src="burger" alt="" class="h-6" />

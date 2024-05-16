@@ -19,7 +19,7 @@ const show_nav = ref(false);
         >
             <!-- Header -->
             <div
-                class="flex justify-between items-center bg-portbg h-20 text-white"
+                class="flex items-center justify-between h-20 text-white bg-portbg"
             >
                 <img :src="logo" alt="" class="h-8" />
                 <nav class="max-lg:hidden">
@@ -28,14 +28,20 @@ const show_nav = ref(false);
                             <CurrentLink link_name="Home" route_name="home" />
                         </Link>
                         <Link :href="route('web-development.index')">
-                            <CurrentLink link_name="Projects" route_name="project" />
+                            <CurrentLink
+                                link_name="Projects"
+                                route_name="project"
+                            />
                         </Link>
 
                         <li>
                             <CurrentLink link_name="About" route_name="about" />
                         </li>
                         <li>
-                            <CurrentLink link_name="Contact" route_name="contact" />
+                            <CurrentLink
+                                link_name="Contact"
+                                route_name="contact"
+                            />
                         </li>
                     </ul>
                 </nav>
@@ -45,18 +51,18 @@ const show_nav = ref(false);
                         :href="route('logout')"
                         method="post"
                         as="button"
-                        class="border border-main py-1.5 px-5 rounded-full hover:bg-main"
+                        class="border border-main py-1.5 px-5 rounded-full hover:bg-main active:bg-[#673220]"
                         >Logout</Link
                     >
                     <Link
                         v-else
                         :href="route('login')"
-                        class="border border-main py-1.5 px-5 rounded-full hover:bg-main"
+                        class="border border-main py-1.5 px-5 rounded-full hover:bg-main active:bg-[#673220]"
                         >Login</Link
                     >
                 </div>
                 <div
-                    class="lg:hidden cursor-pointer select-none"
+                    class="cursor-pointer select-none lg:hidden"
                     @click="show_nav = !show_nav"
                 >
                     <img :src="burger" alt="" class="h-6" />
