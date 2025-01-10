@@ -46,7 +46,7 @@ const handshake = ref("/img/handshake.svg");
     </div>
 
     <!-- Featured Projects -->
-    <div class="mt-20 mb-40 max-sm:mt-0 max-sm:mb-10">
+    <div class="mt-20 mb-40 max-sm:mt-0 max-sm:mb-10" id="projects">
         <div class="flex items-center justify-between pt-32">
             <h1
                 class="text-5xl font-bold max-xl:text-3xl max-md:text-2xl max-sm:text-xl"
@@ -91,7 +91,7 @@ const handshake = ref("/img/handshake.svg");
     </div>
 
     <!-- about section -->
-    <div class="pt-40 pb-20 max-sm:pt-32 text-center">
+    <div class="pt-40 pb-20 max-sm:pt-32 text-center" id="about">
         <h1
             class="font-bold text-5xl mb-10 max-md:mb-5 max-md:text-3xl max-sm:text-2xl"
         >
@@ -145,6 +145,7 @@ const handshake = ref("/img/handshake.svg");
     <!-- footer section -->
     <div
         class="w-full pt-10 bg-gray1 absolute left-0 flex flex-col items-center overflow-hidden"
+        id="contact"
     >
         <div
             class="w-[1200px] mx-auto max-xl:w-[800px] max-md:w-screen flex justify-between flex-wrap max-sm:items-center max-sm:text-center max-sm:gap-5"
