@@ -65,16 +65,24 @@ const handshake = ref("/img/handshake.svg");
             </div>
         </div>
         <div
-            class="mt-20 max-sm:mt-10 flex justify-evenly flex-wrap max-md:flex-col gap-2"
+            class="mt-20 max-sm:mt-10 grid grid-cols-2 gap-4 max-md:grid-cols-1"
         >
-            <div v-for="feat_project in feat_projects">
-                <FeaturedProjects
-                    stack="Laravel"
-                    :projTitle="feat_project.proj_title"
-                    :liveLink="feat_project.web_dev.live_link"
-                    :detailsLink="feat_project.id"
-                />
-            </div>
+            <!-- <div class="w-full h-60 bg-gray2"></div>
+            <div class="w-full h-60 bg-gray2"></div>
+            <div class="w-full h-60 bg-gray2"></div>
+            <div class="w-full h-60 bg-gray2"></div> -->
+
+            <FeaturedProjects
+                v-for="feat_project in feat_projects"
+                stack="Laravel"
+                :projTitle="feat_project.proj_title"
+                :liveLink="feat_project.web_dev.live_link"
+                :detailsLink="feat_project.id"
+                :imgSrc="
+                    feat_project.image_showcase[feat_project.img_thumbnail]
+                        .img_path
+                "
+            />
         </div>
     </div>
 
