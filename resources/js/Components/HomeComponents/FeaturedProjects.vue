@@ -36,12 +36,12 @@ const toggleHover = (bool) => {
     <Link
         :href="route('web-development.show', props.detailsLink)"
         class="w-full h-60 relative rounded-md"
-        :class="{ 'scale-[1.02]': hovered }"
     >
         <div
-            class="w-full h-full"
+            class="w-full h-full transition duration-300 ease-in-out"
             @mouseenter="toggleHover(true)"
             @mouseleave="toggleHover(false)"
+            :class="{ 'scale-[1.02]': hovered }"
         >
             <img
                 :src="props.imgSrc"
@@ -50,13 +50,13 @@ const toggleHover = (bool) => {
             />
         </div>
         <div
-            v-if="hovered"
-            class="w-full h-full absolute top-0 left-0 bg-gray1 bg-opacity-90"
+            class="w-full h-full absolute opacity-0 top-0 left-0 bg-gray1 bg-opacity-90 transition duration-300 ease-in-out scale-[1.02]"
             @mouseenter="toggleHover(true)"
             @mouseleave="toggleHover(false)"
+            :class="{ 'opacity-100': hovered }"
         >
             <div
-                class="h-full w-full px-10 py-6 flex flex-col gap-10 max-xl:gap-10 max-md:gap-5 justify-between max-md:px-6 hover:scale-105 cursor-pointer"
+                class="h-full w-full px-10 py-6 flex flex-col gap-10 max-xl:gap-10 max-md:gap-5 justify-between max-md:px-6 cursor-pointer"
             >
                 <div class="flex justify-between">
                     <p class="text-md max-md:text-sm font-light opacity-50">
