@@ -213,7 +213,7 @@ const submit = () => {
         </carousel>
 
         <pre
-            class="mt-5 text-lg font-light max-sm:text-sm w-full whitespace-pre-wrap font-pop"
+            class="mt-5 text-lg font-light max-sm:text-sm w-full whitespace-pre-wrap font-manrope"
             >{{ project.proj_description }}</pre
         >
 
@@ -250,11 +250,14 @@ const submit = () => {
             >
                 <span class="text font-semibold">See other projects</span>
                 <img
-                :src="drop"
-                class="w-6 h-6 select-none"
-                :class="{ '-rotate-180 transition ease-linear': show_more_projects }"
-                alt=""
-            />
+                    :src="drop"
+                    class="w-6 h-6 select-none"
+                    :class="{
+                        '-rotate-180 transition ease-linear':
+                            show_more_projects,
+                    }"
+                    alt=""
+                />
             </div>
             <Collapse :when="show_more_projects">
                 <Carousel

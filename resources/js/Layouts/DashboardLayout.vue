@@ -5,7 +5,9 @@ import DashNav from "@/Components/DashNav.vue";
 import DashDrop from "@/Components/DashDrop.vue";
 import MobileNav from "@/Components/MobileNav.vue";
 
-import "typeface-poppins";
+import "@fontsource/manrope"; // Defaults to weight 400
+import "@fontsource/manrope/400.css"; // Specify weight
+// import "@fontsource/manrope/400-italic.css"; // Specify weight and style
 const logo = ref("/img/logo.png");
 const burger = ref("/img/burger.svg");
 
@@ -13,7 +15,7 @@ const show_nav = ref(false);
 </script>
 
 <template>
-    <div class="flex font-pop bg-portbg">
+    <div class="flex font-manrope bg-portbg">
         <!-- navigation -->
         <div
             class="sticky top-0 left-0 flex flex-col h-screen gap-10 px-6 bg-gray1 max-md:hidden"

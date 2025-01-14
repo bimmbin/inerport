@@ -1,7 +1,10 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { Link } from "@inertiajs/vue3";
-import "typeface-poppins";
+
+import "@fontsource/manrope"; // Defaults to weight 400
+import "@fontsource/manrope/400.css"; // Specify weight
+// import "@fontsource/manrope/400-italic.css"; // Specify weight and style
 
 import MobileNav from "@/Components/MobileNav.vue";
 import CurrentLink from "@/Components/CurrentLink.vue";
@@ -26,7 +29,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="!font-pop bg-portbg text-white w-full overflow-x-hidden">
+    <div class="!font-manrope bg-portbg text-white w-full overflow-x-hidden">
         <!-- Header -->
         <div
             class="transition-all duration-500 ease-in-out w-full flex items-center justify-between h-20 text-white bg-portbg fixed top-0 left-0 z-20"

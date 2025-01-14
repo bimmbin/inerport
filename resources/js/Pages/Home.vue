@@ -105,48 +105,68 @@ const handshake = ref("/img/handshake.svg");
         >
             About
         </h1>
-        <div
-            class="mt-20 max-md:mt-10 max-sm:mt-0 flex flex-wrap justify-between max-md:flex-col"
-        >
-            <!-- 1st card -->
-            <AboutCard
-                image="bulb"
-                about_title="Turning Ideas into Reality"
-                about_content="Hello, I'm Arvin Gomez, a web developer and designer. My
-                    goal is to help you bring your app ideas to life. I use
-                    various technologies like Laravel, Vue.js, Tailwind CSS,
-                    HTML, CSS, and JavaScript to provide complete solutions for
-                    your projects."
-            />
-            <!-- 2nd card -->
-            <AboutCard
-                image="design"
-                about_title="User-Friendly Designs"
-                about_content=" I specialize in making user interfaces that look great and
-                    are easy to use. Whether it's for websites or mobile apps, I
-                    design with your brand in mind to capture your audience's
-                    attention and provide a smooth experience."
-            />
 
-            <!-- 3rd card -->
-            <AboutCard
-                image="record"
-                about_title="Proven Track Record"
-                about_content="You can count on me to get the job done. I've successfully
-                    completed many projects, and I'm known for clear
-                    communication, working closely with clients, and always
-                    delivering on time."
-            />
+        <div class="text-start flex justify-between gap-3">
+            <div class="w-full space-y-5 bg-red-500 bg-opacity-10">
+                <h1 class="text-xl">
+                    I'm Arvin Gomez with 2 years of experience as a Full Stack
+                    Web Developer, I specialize in crafting seamless and
+                    efficient digital solutions. My expertise in Laravel,
+                    Vue.js, and modern design frameworks like Tailwind CSS
+                    allows me to deliver exceptional results that blend
+                    functionality with aesthetic appeal.
+                </h1>
 
-            <!-- 4th card -->
-            <AboutCard
-                image="handshake"
-                about_title="Let's Work Together"
-                about_content="If you're ready to turn your ideas into reality, let's chat.
-                    Whether your project is well-defined or needs some refining,
-                    I'm here to help you create a standout digital solution that
-                    meets your goals."
-            />
+                <h2 class="text-xl">
+                    But it’s not just about writing code—it’s about solving
+                    problems and delivering meaningful solutions. Whether it’s
+                    optimizing system workflows, creating user-friendly
+                    interfaces, or building scalable back-end architectures, I
+                    thrive on turning challenges into opportunities that drive
+                    success.
+                </h2>
+            </div>
+            <div class="w-full bg-blue-500 bg-opacity-10 flex gap-5 flex-col">
+                <h2 class="font-semibold text-2xl">Why Choose Me?</h2>
+                <ul>
+                    <li class="flex mb-2 flex-col">
+                        <span class="font-semibold whitespace-nowrap"
+                            >Adaptable Problem Solver:</span
+                        >
+                        <p>
+                            I approach every project with a solution-oriented
+                            mindset.
+                        </p>
+                    </li>
+                    <li class="flex mb-2 flex-col">
+                        <span class="font-semibold whitespace-nowrap"
+                            >Collaborative Partner:</span
+                        >
+                        <p>
+                            I tailor my work to meet unique needs and goals,
+                            ensuring the best possible outcome.
+                        </p>
+                    </li>
+                    <li class="flex mb-2 flex-col">
+                        <span class="font-semibold whitespace-nowrap"
+                            >User-Focused Approach:</span
+                        >
+                        <p class="">
+                            From system design to user experience, my work is
+                            always centered on delivering value.
+                        </p>
+                    </li>
+                </ul>
+                <p>
+                    Let’s Build Together I’m passionate about leveraging my
+                    skills to create impactful applications that make a
+                    difference. Whether it's contributing to innovative teams or
+                    building solutions that solve real-world challenges, I bring
+                    dedication and expertise to every project. Let’s connect and
+                    explore how we can work together to create something
+                    exceptional!
+                </p>
+            </div>
         </div>
     </div>
 

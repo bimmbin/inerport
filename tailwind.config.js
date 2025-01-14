@@ -15,7 +15,7 @@ export default {
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
                 mont: "'Montserrat', sans-serif",
-                pop: "'poppins', Poppins",
+                manrope: "Manrope",
             },
             colors: {
                 portbg: "#121212",
