@@ -14,7 +14,9 @@ defineProps({
 
 <template>
     <a :href="`#${scroll_to}`"
-        ><div class="py-2 px-5 rounded-md hover:bg-gray2 cursor-pointer">
+        ><div
+            class="py-2 text-sm px-5 rounded-md text-gray-400 hover:text-white hover:bg-white hover:bg-opacity-5 cursor-pointer"
+        >
             {{ link_name }}
         </div></a
     >

@@ -15,8 +15,28 @@ const emit = defineEmits(["close_emit"]);
 
 const inputTech = ref("");
 const inputFeat = ref("");
-const current_stacks_orig = ref(["HTML", "CSS", "Javascript", "PHP", "Mysql", "Vue.js", "Inertia", "Laravel", "Tailwindcss"]);
-const current_stacks = ref(["HTML", "CSS", "Javascript", "PHP", "Mysql", "Vue.js", "Inertia", "Laravel", "Tailwindcss"]);
+const current_stacks_orig = ref([
+    "HTML",
+    "CSS",
+    "Javascript",
+    "PHP",
+    "Mysql",
+    "Vue.js",
+    "Inertia",
+    "Laravel",
+    "Tailwindcss",
+]);
+const current_stacks = ref([
+    "HTML",
+    "CSS",
+    "Javascript",
+    "PHP",
+    "Mysql",
+    "Vue.js",
+    "Inertia",
+    "Laravel",
+    "Tailwindcss",
+]);
 
 const addTech = () => {
     if (inputTech.value.trim() !== "") {
@@ -27,7 +47,7 @@ const addTech = () => {
 const removeTech = (index, stack) => {
     form.tech_used.splice(index, 1);
     if (current_stacks_orig.value.includes(stack)) {
-      current_stacks.value.push(stack);
+        current_stacks.value.push(stack);
     }
 };
 
@@ -214,7 +234,7 @@ const submit = () => {
                                         }"
                                     />
                                     <div
-                                        class="absolute top-0 left-0 w-full bg-main bg-opacity-5 h-full flex items-center justify-center text-xl text-black"
+                                        class="absolute top-0 left-0 w-full bg-main-primary bg-opacity-5 h-full flex items-center justify-center text-xl text-black"
                                         :class="{
                                             hidden: form.img_thumbnail != index,
                                         }"
@@ -232,7 +252,7 @@ const submit = () => {
                         <div
                             v-for="(stack, index) in current_stacks"
                             @click="add_currentStack(stack, index)"
-                            class="bg-orange-800 px-3 py-2 text-white rounded-md hover:bg-main cursor-pointer select-none"
+                            class="bg-orange-800 px-3 py-2 text-white rounded-md hover:bg-main-primary cursor-pointer select-none"
                         >
                             {{ stack }}
                         </div>
@@ -257,7 +277,7 @@ const submit = () => {
                             />
                             <div
                                 @click="addTech"
-                                class="bg-main rounded-md h-fit px-3 py-2 cursor-pointer select-none"
+                                class="bg-main-primary rounded-md h-fit px-3 py-2 cursor-pointer select-none"
                             >
                                 Add
                             </div>
@@ -305,7 +325,7 @@ const submit = () => {
                             />
                             <div
                                 @click="addFeat"
-                                class="bg-main rounded-md h-fit px-3 py-2 cursor-pointer select-none"
+                                class="bg-main-primary rounded-md h-fit px-3 py-2 cursor-pointer select-none"
                             >
                                 Add
                             </div>

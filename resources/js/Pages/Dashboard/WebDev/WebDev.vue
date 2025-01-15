@@ -26,7 +26,6 @@ watch(show, (newValue) => {
         document.body.style.overflow = "visible";
     }
 });
-
 </script>
 
 <template>
@@ -38,10 +37,7 @@ watch(show, (newValue) => {
     </div>
 
     <!-- Main content -->
-    <div
-        class="h-fit px-5 max-md:px-0 max-md:mt-24 max-md:overflow-y-hidden"
-    >
-        
+    <div class="h-fit px-5 max-md:px-0 max-md:mt-24 max-md:overflow-y-hidden">
         <div
             class="flex justify-between items-center mb-5 max-sm:flex-col max-sm:items-start"
         >
@@ -58,7 +54,7 @@ watch(show, (newValue) => {
                 <div
                     v-if="$page.props.auth.user"
                     @click="show = !show"
-                    class="bg-main rounded-full px-5 py-2 cursor-pointer select-none max-sm:px-3"
+                    class="bg-main-primary rounded-full px-5 py-2 cursor-pointer select-none max-sm:px-3"
                 >
                     Create
                 </div>

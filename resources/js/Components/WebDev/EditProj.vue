@@ -214,12 +214,12 @@ const submit = () => {
                                         }"
                                     />
                                     <div
-                                        class="absolute top-0 left-0 w-full bg-main bg-opacity-5 h-full flex items-center justify-center text-xl text-black"
+                                        class="absolute top-0 left-0 w-full bg-main-primary bg-opacity-5 h-full flex items-center justify-center text-xl text-black"
                                         :class="{
                                             hidden: form.img_thumbnail != index,
                                         }"
                                     >
-                                        <img :src="checked" alt="">
+                                        <img :src="checked" alt="" />
                                     </div>
                                 </label>
                             </div>
@@ -246,7 +246,7 @@ const submit = () => {
                             />
                             <div
                                 @click="addTech"
-                                class="bg-main rounded-md h-fit px-3 py-2 cursor-pointer select-none"
+                                class="bg-main-primary rounded-md h-fit px-3 py-2 cursor-pointer select-none"
                             >
                                 Add
                             </div>
@@ -294,7 +294,7 @@ const submit = () => {
                             />
                             <div
                                 @click="addFeat"
-                                class="bg-main rounded-md h-fit px-3 py-2 cursor-pointer select-none"
+                                class="bg-main-primary rounded-md h-fit px-3 py-2 cursor-pointer select-none"
                             >
                                 Add
                             </div>

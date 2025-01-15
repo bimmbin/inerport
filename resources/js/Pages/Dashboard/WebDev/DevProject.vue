@@ -116,7 +116,7 @@ const submit = () => {
                     <div
                         v-if="$page.props.auth.user"
                         @click="show_edit = !show_edit"
-                        class="cursor-pointer border-[2px] border-gray-600 active:bg-main rounded-full p-2 hover:bg-gray-600 w-fit h-fit"
+                        class="cursor-pointer border-[2px] border-gray-600 active:bg-main-primary rounded-full p-2 hover:bg-gray-600 w-fit h-fit"
                     >
                         <img
                             :src="edit"
@@ -126,7 +126,7 @@ const submit = () => {
                     <a
                         :href="'http://' + project.web_dev.live_link"
                         target="_blank"
-                        class="cursor-pointer border-[2px] border-gray-600 active:bg-main rounded-full p-1 hover:bg-gray-600 w-fit h-fit"
+                        class="cursor-pointer border-[2px] border-gray-600 active:bg-main-primary rounded-full p-1 hover:bg-gray-600 w-fit h-fit"
                     >
                         <img
                             :src="live"
@@ -136,7 +136,7 @@ const submit = () => {
                     <a
                         :href="'http://' + project.web_dev.github_link"
                         target="_blank"
-                        class="cursor-pointer border-[2px] border-gray-600 active:bg-main rounded-full p-1 hover:bg-gray-600 w-fit h-fit"
+                        class="cursor-pointer border-[2px] border-gray-600 active:bg-main-primary rounded-full p-1 hover:bg-gray-600 w-fit h-fit"
                     >
                         <img
                             :src="github"
@@ -160,7 +160,7 @@ const submit = () => {
                     <div
                         v-if="$page.props.auth.user"
                         @click="show_edit = !show_edit"
-                        class="cursor-pointer border-[2px] border-gray-600 active:bg-main rounded-full p-2 hover:bg-gray-600"
+                        class="cursor-pointer border-[2px] border-gray-600 active:bg-main-primary rounded-full p-2 hover:bg-gray-600"
                     >
                         <img
                             :src="edit"
@@ -170,7 +170,7 @@ const submit = () => {
                     <a
                         :href="'http://' + project.web_dev.live_link"
                         target="_blank"
-                        class="cursor-pointer border-[2px] active:bg-main border-gray-600 rounded-full p-2 hover:bg-gray-600"
+                        class="cursor-pointer border-[2px] active:bg-main-primary border-gray-600 rounded-full p-2 hover:bg-gray-600"
                     >
                         <img
                             :src="live"
@@ -180,7 +180,7 @@ const submit = () => {
                     <a
                         :href="'http://' + project.web_dev.github_link"
                         target="_blank"
-                        class="cursor-pointer border-[2px] active:bg-main border-gray-600 rounded-full p-2 hover:bg-gray-600"
+                        class="cursor-pointer border-[2px] active:bg-main-primary border-gray-600 rounded-full p-2 hover:bg-gray-600"
                     >
                         <img
                             :src="github"
@@ -223,7 +223,7 @@ const submit = () => {
             <div class="flex flex-wrap gap-2 max-sm:gap-1 mt-2">
                 <span
                     v-for="feat in project.web_dev.web_feat"
-                    class="bg-main_light px-5 py-2 rounded-full font-medium max-sm:text-sm max-sm:px-3 max-sm:py-2"
+                    class="bg-main-primary_light px-5 py-2 rounded-full font-medium max-sm:text-sm max-sm:px-3 max-sm:py-2"
                     >{{ feat.feat_name }}</span
                 >
             </div>
@@ -237,7 +237,7 @@ const submit = () => {
             <div class="flex flex-wrap gap-2 max-sm:gap-1 mt-2">
                 <span
                     v-for="tech in project.web_dev.tech_used"
-                    class="bg-main_light px-5 py-2 rounded-full font-medium max-sm:text-sm max-sm:px-3 max-sm:py-2"
+                    class="bg-main-primary_light px-5 py-2 rounded-full font-medium max-sm:text-sm max-sm:px-3 max-sm:py-2"
                     >{{ tech.tech_name }}</span
                 >
             </div>

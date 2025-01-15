@@ -94,7 +94,7 @@ const show_nav = ref(false);
                 :href="route('logout')"
                 method="post"
                 as="button"
-                class="py-3 text-white border rounded-md border-main hover:bg-main active:bg-[#673220]"
+                class="py-3 text-white border rounded-md border-main hover:bg-main-primary active:bg-[#673220]"
             >
                 Logout
             </Link>
@@ -102,7 +102,7 @@ const show_nav = ref(false);
                 v-else
                 :href="route('login')"
                 as="button"
-                class="py-3 text-white border rounded-md border-main hover:bg-main active:bg-[#673220]"
+                class="py-3 text-white border rounded-md border-main hover:bg-main-primary active:bg-[#673220]"
             >
                 Login
             </Link>
